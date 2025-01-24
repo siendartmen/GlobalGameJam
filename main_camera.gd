@@ -2,7 +2,8 @@ extends Camera2D
 
 
 var zoom_level := 1.0
-var camera_offset := Vector2.ZERO
+
+@onready var camera_offset := position
 
 
 func _input(event: InputEvent) -> void:
