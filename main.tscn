@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c051ohr8cdrur"]
+
+[ext_resource type="PackedScene" uid="uid://libur5ycrvel" path="res://Draggable/draggable.tscn" id="1_8mhl6"]
+[ext_resource type="PackedScene" uid="uid://favx3xqj4804" path="res://MainCamera.tscn" id="2_8wjr4"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Draggable" parent="." instance=ExtResource("1_8mhl6")]
+position = Vector2(288, 227)
+
+[node name="Camera2D" parent="." instance=ExtResource("2_8wjr4")]
+position = Vector2(576, 325)
