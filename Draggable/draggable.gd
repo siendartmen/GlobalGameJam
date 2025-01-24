@@ -3,7 +3,8 @@ extends RigidBody2D
 
 var is_dragging = false
 var drag_offset = Vector2(0,0)
-var follow_speed = 50
+var follow_speed = 800
+var auto_rotate_speed = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,10 +18,14 @@ func _process(delta: float) -> void:
 		var gain_velocity = ((get_global_mouse_position() - drag_offset) - global_position) * follow_speed
 		var close_dampening = 1 if (distance_to_mouse() > radius()) else (1 - (radius() - distance_to_mouse())/radius())
 		
-		var maxToLerp = radius()*5
-		var lerp = clampf(maxToLerp - distance_to_mouse(),0,maxToLerp)
-		linear_velocity = (gain_velocity * close_dampening)
+		var maxToLerp = radius()*7#max distance at which to lerp
+		var lerp = 1 - clampf(maxToLerp - distance_to_mouse(),0,maxToLerp)/maxToLerp
 		
+		linear_velocity = (gain_velocity * close_dampening * lerp * delta)
+	
+	var max_velocity_for_auto_rotate = 200
+	if abs(rotation_degrees) > 0 and linear_velocity.length() < max_velocity_for_auto_rotate: 
+		rotation_degrees = rotation_degrees * (1 - delta * auto_rotate_speed * (max_velocity_for_auto_rotate - linear_velocity.length())/max_velocity_for_auto_rotate )
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and distance_to_mouse() < radius() :
@@ -93,7 +98,7 @@ func get_visible_edges() -> Dictionary:
 func distance_to_mouse() -> float:
 	return get_global_mouse_position().distance_to(global_position);
 func radius() -> float:
-	return collision_shape_2d.shape.radius;
+	return collision_shape_2d.shape.extents.x;
 func left() -> float:
 	return global_position.x - radius()
 func right() -> float:
