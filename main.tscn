@@ -6,7 +6,6 @@
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" parent="." instance=ExtResource("2_8wjr4")]
-position = Vector2(576, 325)
 
 [node name="FOLDER" type="Node2D" parent="."]
 
