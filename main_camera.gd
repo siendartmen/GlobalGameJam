@@ -2,6 +2,7 @@ extends Camera2D
 
 
 var zoom_level := 1.0
+var drag_offset := Vector2.ZERO
 
 @onready var camera_offset := position
 
@@ -11,7 +12,12 @@ func _enter_tree() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseMotion:
+		if event.button_mask == MOUSE_BUTTON_MASK_LEFT:
+			global_position -= event.relative
+	
+	elif event is InputEventMouseButton:
+		# Zooming in and out
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			var old_zoom = zoom_level
 			zoom_level = min(zoom_level * 1.1, 2.0)
