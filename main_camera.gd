@@ -6,6 +6,10 @@ var zoom_level := 1.0
 @onready var camera_offset := position
 
 
+func _enter_tree() -> void:
+	Singleton.main_camera = self
+
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
