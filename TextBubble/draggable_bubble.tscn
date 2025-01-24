@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgioliqw6ydx7"]
+
+[ext_resource type="PackedScene" uid="uid://libur5ycrvel" path="res://Draggable/draggable.tscn" id="1_kc0bw"]
+[ext_resource type="PackedScene" uid="uid://jida7ua8oe0o" path="res://TextBubble/TextBubble.tscn" id="2_0u12m"]
+
+[node name="RigidBody2D" instance=ExtResource("1_kc0bw")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-56.5, 33)
+
+[node name="TextureRect" parent="." index="1" instance=ExtResource("2_0u12m")]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_left = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -312.5
+offset_top = -125.75
+offset_right = 202.5
+offset_bottom = 266.25

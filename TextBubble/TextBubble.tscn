@@ -1,47 +1,60 @@
-[gd_scene format=3 uid="uid://jida7ua8oe0o"]
+[gd_scene load_steps=3 format=3 uid="uid://jida7ua8oe0o"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+[ext_resource type="Texture2D" uid="uid://bhl5ynthspq45" path="res://Draggable/bubbbbllllee.png" id="1_estlk"]
+[ext_resource type="Script" path="res://TextBubble/text_bubble.gd" id="1_g42c4"]
+
+[node name="TextureRect" type="TextureRect"]
+anchors_preset = -1
+anchor_left = -0.00173611
+anchor_right = 0.574653
+anchor_bottom = 0.683642
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_estlk")
+expand_mode = 1
+script = ExtResource("1_g42c4")
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="SenderLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -172.5
-offset_top = -134.5
-offset_right = 172.5
-offset_bottom = 134.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SenderLabel" type="RichTextLabel" parent="VBoxContainer"]
-layout_mode = 2
+offset_left = 38.0
+offset_top = 22.0
+offset_right = 383.0
+offset_bottom = 77.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/bold_italics_font_size = 40
-theme_override_font_sizes/italics_font_size = 40
-theme_override_font_sizes/mono_font_size = 40
-theme_override_font_sizes/normal_font_size = 40
-theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_font_size = 35
 bbcode_enabled = true
 text = "[b]Jeanice[/b]"
 fit_content = true
 scroll_active = false
 
-[node name="MessageLabel" type="RichTextLabel" parent="VBoxContainer"]
-layout_mode = 2
+[node name="MessageLabel" type="RichTextLabel" parent="."]
+offset_left = 36.0
+offset_top = 86.0
+offset_right = 538.0
+offset_bottom = 286.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 25
 text = "I can't believe he would do this. We've been friends for SOOO LONG
 "
 fit_content = true
 scroll_active = false
+
+[node name="TimestampLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -172.0
+offset_top = -138.0
+offset_right = -40.0
+offset_bottom = -103.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "8:15pm
+"
+horizontal_alignment = 2

@@ -13,19 +13,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	if is_dragging:
-		var gain_velocity = ((get_global_mouse_position() - drag_offset) - global_position) * follow_speed
-		var close_dampening = 1 if (distance_to_mouse() > radius()) else (1 - (radius() - distance_to_mouse())/radius())
-		
-		var maxToLerp = radius()*7#max distance at which to lerp
-		var lerp = 1 - clampf(maxToLerp - distance_to_mouse(),0,maxToLerp)/maxToLerp
-		
-		linear_velocity = (gain_velocity * close_dampening * lerp * delta)
-	
-	var max_velocity_for_auto_rotate = 200
-	if abs(rotation_degrees) > 0 and linear_velocity.length() < max_velocity_for_auto_rotate: 
-		rotation_degrees = rotation_degrees * (1 - delta * auto_rotate_speed * (max_velocity_for_auto_rotate - linear_velocity.length())/max_velocity_for_auto_rotate )
+	#lerp follow mouse
+	do_drag(delta)
+	restore_rotation(delta)	
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click") and distance_to_mouse() < radius() :
@@ -64,6 +54,21 @@ func screen_border_collisions():
 	#bottom side of screen
 	if(bottom() > get_visible_edges().get("bottom")): linear_velocity = Vector2((linear_velocity.x),-abs(linear_velocity.y))
 
+func restore_rotation(delta: float):
+	#restore rotation to zero
+	var max_velocity_for_auto_rotate = 200
+	if abs(rotation_degrees) > 0 and linear_velocity.length() < max_velocity_for_auto_rotate: 
+		rotation_degrees = rotation_degrees * (1 - delta * auto_rotate_speed * (max_velocity_for_auto_rotate - linear_velocity.length())/max_velocity_for_auto_rotate )
+
+func do_drag(delta: float):
+	if is_dragging:
+		var gain_velocity = ((get_global_mouse_position() - drag_offset) - global_position) * follow_speed
+		var close_dampening = 1 if (distance_to_mouse() > radius()*0) else (1 - (radius() - distance_to_mouse())/radius())
+		
+		var maxToLerp = radius()*5#max distance at which to lerp
+		var lerp = 1 - clampf(maxToLerp - distance_to_mouse(),0,maxToLerp)/maxToLerp
+		
+		linear_velocity = (gain_velocity * close_dampening * lerp * delta)
 #endregion
 
 #region Helper functions
@@ -96,7 +101,7 @@ func get_visible_edges() -> Dictionary:
 	}
 	
 func distance_to_mouse() -> float:
-	return get_global_mouse_position().distance_to(global_position);
+	return get_global_mouse_position().distance_to(global_position + drag_offset);
 func radius() -> float:
 	return collision_shape_2d.shape.extents.x;
 func left() -> float:
