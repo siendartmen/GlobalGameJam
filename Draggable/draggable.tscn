@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://libur5ycrvel"]
 
 [ext_resource type="Script" path="res://Draggable/draggable.gd" id="1_aogv7"]
+[ext_resource type="Texture2D" uid="uid://bhl5ynthspq45" path="res://Draggable/bubbbbllllee.png" id="2_kxi5q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wx2c4"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_opgop"]
+radius = 40.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -15,5 +15,5 @@ script = ExtResource("1_aogv7")
 shape = SubResource("CircleShape2D_wx2c4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(20, 20)
-texture = SubResource("PlaceholderTexture2D_opgop")
+scale = Vector2(0.172, 0.172)
+texture = ExtResource("2_kxi5q")

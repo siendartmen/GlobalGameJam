@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 	
 func screen_border_collisions():
 	
-	var screen_size = get_viewport().get_visible_rect().size
+	var screen_size = DisplayServer.window_get_size()#get_viewport().get_visible_rect().size
 	#left side of screen
 	if(left() < 0): linear_velocity = Vector2(abs(linear_velocity.x),linear_velocity.y)
 	

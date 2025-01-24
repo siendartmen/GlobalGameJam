@@ -5,8 +5,16 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Draggable" parent="." instance=ExtResource("1_8mhl6")]
-position = Vector2(288, 227)
-
 [node name="Camera2D" parent="." instance=ExtResource("2_8wjr4")]
 position = Vector2(576, 325)
+
+[node name="FOLDER" type="Node2D" parent="."]
+
+[node name="Draggable" parent="FOLDER" instance=ExtResource("1_8mhl6")]
+position = Vector2(288, 227)
+
+[node name="Draggable2" parent="FOLDER" instance=ExtResource("1_8mhl6")]
+position = Vector2(580, 205)
+
+[node name="Draggable3" parent="FOLDER" instance=ExtResource("1_8mhl6")]
+position = Vector2(378, 379)
