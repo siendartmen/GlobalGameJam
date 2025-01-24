@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8aqyhkcva3eb"]
+
+[ext_resource type="Script" path="res://area_2d.gd" id="1_smnke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gj4a7"]
+size = Vector2(251, 646.5)
+
+[node name="Message Box" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1001.5, 322.75)
+script = ExtResource("1_smnke")
+
+[node name="Message_Box_Area" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.25)
+shape = SubResource("RectangleShape2D_gj4a7")
+debug_color = Color(0.677764, 0.420572, 0.7307, 0.42)
