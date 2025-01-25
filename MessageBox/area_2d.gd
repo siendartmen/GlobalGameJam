@@ -1,69 +1,76 @@
 extends Area2D
 
-const MAX_BUBBLES = 3  # Maximum number of bubbles in the chat box
-const SCROLL_SPEED = 0.5  # Speed of scrolling 
+const MAX_BUBBLES = 5        # Maximum visible messages in the chat box
+const SHRINK_DURATION = 0.3  # Duration for shrinking effect
+const SCROLL_DURATION = 0.5  # Duration for scrolling effect
+const BUBBLE_SPACING = 10    # Spacing between bubbles
+const INTERACTION_LAYER = 2  # Layer for interactable bubbles inside the box
 
-# List to keep track of bubbles in the correct order
-var bubbles_list: Array = []
+var bubbles_list: Array = [] # List to store active bubbles
+var tween: Tween             # Tween node for smooth animations
 
-# Declare the Tween node here
-var tween: Tween
+func _ready() -> void:
+	tween = create_tween()
 
-# Called when the node enters the scene tree for the first time
-func _ready():
-	# Initialize the Tween node using create_tween(), which is valid
-	tween = create_tween()  # Create the tween for this node
-
-# Signal handler for when a shape enters the Area2D
+# Triggered when a bubble enters the message box
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	print("Collision detected with:", body.name)
-	add_bubble_to_list(body)
-	arrange_bubbles()
-
-# Alternative signal for when a body enters
-func _on_body_entered(body):
-	print("Body entered:", body.name)
-	print("Overlapping bodies:", get_overlapping_bodies())
-	add_bubble_to_list(body)
-	arrange_bubbles()
-
-# Add the bubble to the list and freeze it
-func add_bubble_to_list(body):
-	# Ensure the body is of the correct type (e.g., a bubble)
 	if !bubbles_list.has(body):
-		print("Adding bubble:", body.name)
-		bubbles_list.append(body)
-		
-		# Freeze the bubble in place and set its velocity to 0
-		body.freeze_mode = RigidBody2D.FREEZE_MODE_STATIC  # Freeze the bubble in place
-		body.linear_velocity = Vector2.ZERO  # Ensure the bubble stops moving
+		print("Bubble entered:", body.name)
+		add_bubble_to_list(body)
 
-# Arrange the bubbles inside the message box
-func arrange_bubbles():
-	print("arranging bubbles")
-	print("bubble list: ", bubbles_list)
+# Add bubble to the list, shrink it, and freeze it
+func add_bubble_to_list(body: Node2D) -> void:
+	print("adding bubble", bubbles_list)
+	bubbles_list.append(body)
+	body.set_freeze_enabled(true)  # Freeze its physics
+	body.linear_velocity = Vector2.ZERO  # Stop any movement
+
+	# Move and shrink the bubble
+	shrink_and_freeze_bubble(body)
+
+	# Scroll other bubbles to make space
+	scroll_bubbles_up()
+
+# Shrink the bubble into the message box
+func shrink_and_freeze_bubble(bubble: Node2D) -> void:
+	print("freezing and shrinking ")
+	var tween = get_tree().create_tween()
+
+	# Shrink the bubble
+	tween.tween_property(bubble, "scale", Vector2(0.8, 0.8), 0.3)
+
+	# Add a callback to freeze the bubble after shrinking
+	tween.tween_callback(freeze_bubble.bind(bubble))
+
+func freeze_bubble(bubble: Node2D) -> void:
+	bubble.set_freeze_enabled(true)  # Stop all forces and movements
+
+# Scroll existing bubbles upward to make space
+func scroll_bubbles_up() -> void:
+	for i in range(bubbles_list.size()):
+		var bubble = bubbles_list[i]
+		var target_pos = calculate_target_position(i - 1)  # Shift upward
+		tween.tween_property(bubble, "position", target_pos, SCROLL_DURATION)
+
+	# Remove bubbles that scroll out of bounds
+	if is_out_of_bounds(bubbles_list[0]):
+		remove_bubble(bubbles_list[0])
+
+# Remove a bubble when it exits the message box
+func remove_bubble(bubble: Node2D) -> void:
+	print("Removing bubble:", bubble.name)
+	bubbles_list.erase(bubble)
+	bubble.queue_free()
+
+# Calculate the target position for a bubble based on its index
+func calculate_target_position(index: int) -> Vector2:
 	var y_offset = 0
-	
-	# If the number of bubbles exceeds the limit, scroll all bubbles up
-	if bubbles_list.size() > MAX_BUBBLES:
-		scroll_bubbles_up()
+	if index >= 0:
+		for i in range(index):
+			var bubble = bubbles_list[i]
+			y_offset += bubble.get_node("CollisionShape2D").shape.extents.y * 2 + BUBBLE_SPACING
+	return Vector2(0, y_offset)
 
-	# Position each bubble after scrolling (or initially)
-	for bubble in bubbles_list:
-		# Check if the bubble is already in position before moving it
-		if bubble.position != Vector2(0, y_offset):
-			move_bubble_to_position(bubble, Vector2(0, y_offset))  # Smoothly move to new position
-		y_offset += bubble.get_node("CollisionShape2D").shape.extents.y * 2 + 10  # Adjust spacing
-
-# Scroll all bubbles upwards by a small amount
-func scroll_bubbles_up():
-	# Scroll all bubbles upwards by a small amount
-	for bubble in bubbles_list:
-		move_bubble_to_position(bubble, bubble.position + Vector2(0, -SCROLL_SPEED))  # Move bubble up
-
-# Example of moving a bubble to a specific position (optional)
-func move_bubble_to_position(bubble, target_pos):
-	print("moving bubble")
-
-	# Use the tween to interpolate the position of the bubble
-	tween.tween_property(bubble, "position", target_pos, 0.5)
+# Check if a bubble is out of bounds
+func is_out_of_bounds(bubble: Node2D) -> bool:
+	return bubble.position.y + bubble.get_node("CollisionShape2D").shape.extents.y < 0
