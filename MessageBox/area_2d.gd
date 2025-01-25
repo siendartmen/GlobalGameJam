@@ -11,14 +11,6 @@ var tween: Tween             # Tween node for smooth animations
 
 var shrinking:Node2D = null
 
-
-func _process(delta: float) -> void:
-	pass
-	#if shrinking != null :
-		#freeze_bubble(shrinking)
-		
-		
-	
 # Triggered when a bubble enters the message box
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if shrinking == null and !bubbles_list.has(body) and Singleton.is_dragging_bubble:
@@ -33,9 +25,10 @@ func add_bubble_to_list(body: Node2D) -> void:
 	call_deferred("freeze_bubble", body)
 	
 	# Move and shrink the bubble
-	shrink_and_freeze_bubble(body)
+	shrink_bubble(body)
 
 func freeze_bubble(bubble) -> void:
+	print("freezing")
 	bubble.freeze = true
 	bubble.linear_velocity = Vector2.ZERO
 	bubble.rigid_body_2d.collision_layer = 0
@@ -43,8 +36,8 @@ func freeze_bubble(bubble) -> void:
 
 
 # Shrink the bubble into the message box
-func shrink_and_freeze_bubble(bubble: Node2D) -> void:
-	print("freezing and shrinking ")
+func shrink_bubble(bubble: Node2D) -> void:
+	print("shrinking ")
 	var tween = get_tree().create_tween()
 	
 	# Shrink the bubble
@@ -54,40 +47,37 @@ func shrink_and_freeze_bubble(bubble: Node2D) -> void:
 	# Add a callback to freeze the bubble after shrinking
 	tween.tween_callback(freeze_bubble_final.bind(bubble, size, tween))
 
-
 func freeze_bubble_final(bubble: Node2D, size:Vector2, tween) :
 	freeze_bubble(bubble)
 	call_deferred("set_scale_after_tween",bubble,size)
 	
 func set_scale_after_tween(bubble: Node2D, size) :
 	bubble.scale = Vector2(0.5, 0.5)
-
-# Scroll existing bubbles upward to make space
+	bubble.position = Vector2(1047,100)
+	
+	# Smoothly scroll bubbles upward and reposition them
 func scroll_bubbles_up() -> void:
 	for i in range(bubbles_list.size()):
 		var bubble = bubbles_list[i]
-		var target_pos = calculate_target_position(i - 1)  # Shift upward
-		tween.tween_property(bubble, "position", target_pos, SCROLL_DURATION)
+		var target_pos = calculate_target_position(i)  # Calculate new position
+		move_bubble_to_position(bubble, target_pos)
 
-	# Remove bubbles that scroll out of bounds
-	if is_out_of_bounds(bubbles_list[0]):
-		remove_bubble(bubbles_list[0])
-
-# Remove a bubble when it exits the message box
-func remove_bubble(bubble: Node2D) -> void:
-	print("Removing bubble:", bubble.name)
-	bubbles_list.erase(bubble)
-	bubble.queue_free()
+# Smoothly move a bubble to the target position
+func move_bubble_to_position(bubble: Node2D, target_pos: Vector2) -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(bubble, "position", target_pos, SCROLL_DURATION)
 
 # Calculate the target position for a bubble based on its index
 func calculate_target_position(index: int) -> Vector2:
-	var y_offset = 0
-	if index >= 0:
-		for i in range(index):
-			var bubble = bubbles_list[i]
-			y_offset += bubble.get_node("CollisionShape2D").shape.extents.y * 2 + BUBBLE_SPACING
-	return Vector2(0, y_offset)
+	var base_y = 100  # Starting Y position for the first bubble
+	var y_offset = base_y + index * (BUBBLE_SPACING + get_bubble_height(index))
 
-# Check if a bubble is out of bounds
-func is_out_of_bounds(bubble: Node2D) -> bool:
-	return bubble.position.y + bubble.get_node("CollisionShape2D").shape.extents.y < 0
+	# Ensure bubbles are stacked vertically in the box
+	return Vector2(0, -y_offset)
+
+# Get the height of a bubble based on its index
+func get_bubble_height(index: int) -> float:
+	if index >= 0 and index < bubbles_list.size():
+		return bubbles_list[index].get_node("CollisionShape2D").shape.extents.y * 2
+	
+	return 0  # Default height if index is invalid
