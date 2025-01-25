@@ -26,6 +26,9 @@ func add_bubble_to_list(body: Node2D) -> void:
 	
 	# Move and shrink the bubble
 	shrink_bubble(body)
+	
+	# Align all bubbles neatly in the message box
+	scroll_bubbles_up()
 
 func freeze_bubble(bubble) -> void:
 	print("freezing")
@@ -48,8 +51,10 @@ func shrink_bubble(bubble: Node2D) -> void:
 	tween.tween_callback(freeze_bubble_final.bind(bubble, size, tween))
 
 func freeze_bubble_final(bubble: Node2D, size:Vector2, tween) :
+	print("Bubble shrunk and frozen:", bubble.name)
 	freeze_bubble(bubble)
 	call_deferred("set_scale_after_tween",bubble,size)
+	shrinking = null  # Reset shrinking to allow the next bubble to shrink
 	
 func set_scale_after_tween(bubble: Node2D, size) :
 	bubble.scale = Vector2(0.5, 0.5)
