@@ -56,4 +56,6 @@ func init_bubble(new_draggable_bubble, message: Message) -> void:
 
 
 func notify(txt: String, color: Color) -> void:
-	pass
+	main_node.notification.text = txt
+	main_node.notification.color_rect.color = color
+	main_node.notification_player.play("notify")
