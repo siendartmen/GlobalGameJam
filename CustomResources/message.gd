@@ -17,6 +17,15 @@ enum Emojis {
 	CRY,
 }
 
+const SENDERS = [
+	"Quail",
+	"Lillian",
+	"June",
+	"Ron",
+	"Mason",
+	"Cat",
+]
+
 
 @export var time: String
 @export var sender: Senders
@@ -37,3 +46,7 @@ func _init(tim: String, s: Senders, m: String, cor: Emojis, p: int, tru: int, co
 	truth = tru
 	confused = con
 	original_source = o
+
+
+func get_sender_string() -> String:
+	return SENDERS[int(sender)]

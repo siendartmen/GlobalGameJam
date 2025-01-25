@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Phase" load_steps=4 format=3 uid="uid://bto7sbgsotp4a"]
+[gd_resource type="Resource" script_class="Phase" load_steps=4 format=3 uid="uid://b40guc8rxvn54"]
 
 [ext_resource type="Script" path="res://CustomResources/message.gd" id="1_ji7cp"]
 [ext_resource type="Script" path="res://CustomResources/phase.gd" id="2_4wlgl"]

@@ -2,6 +2,7 @@ extends Node
 
 
 const DRAGGABLE_BUBBLE = preload("res://TextBubble/draggable_bubble.tscn")
+const INTRO: Phase = preload("res://CustomResources/Intro.tres")
 
 ##GAME STATS
 var ability_points = 4
@@ -25,7 +26,10 @@ func _ready() -> void:
 
 
 func intro() -> void:
-	spawn_draggable_bubble("Quail","Dude omg, did you hear what happened with Nick last night?","9:11am")
+	print("intro running")
+	for bubble in INTRO.messages:
+		print(bubble.message)
+		spawn_draggable_bubble(bubble.get_sender_string(), bubble.message, bubble.time)
 
 
 func phase_1() -> void:
@@ -39,11 +43,11 @@ func spawn_draggable_bubble(sender: String, message: String, timestamp: String) 
 	call_deferred("init_bubble",new_draggable_bubble,sender,message,timestamp)
 
 
-func init_bubble(new_draggable_bubble, sender: String, message: String, timestamp: String) -> void:
+func init_bubble(new_draggable_bubble, message: Message) -> void:
 	var bubble = new_draggable_bubble.message_bubble.texture_rect;
-	bubble.sender = sender
-	bubble.message = message
-	bubble.timestamp = timestamp
+	bubble.sender = message.sender
+	bubble.message = message.message
+	bubble.timestamp = message.time
 
 
 func notify(txt: String, color: Color) -> void:
