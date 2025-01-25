@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Phase" load_steps=4 format=3 uid="uid://b40guc8rxvn54"]
+
+[ext_resource type="Script" path="res://CustomResources/message.gd" id="1_ji7cp"]
+[ext_resource type="Script" path="res://CustomResources/phase.gd" id="2_4wlgl"]
+
+[sub_resource type="Resource" id="Resource_1wnsu"]
+script = ExtResource("1_ji7cp")
+time = "9:35pm"
+sender = 0
+message = "OMG, did you hear what happened with Nick last night? "
+correct_emoji = 0
+points = 0
+truth = -1
+confused = 34
+original_source = "Max"
+
+[resource]
+script = ExtResource("2_4wlgl")
+messages = Array[ExtResource("1_ji7cp")]([SubResource("Resource_1wnsu")])
