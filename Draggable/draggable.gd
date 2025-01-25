@@ -2,6 +2,7 @@ class_name Draggable
 extends RigidBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var button: Button = $Button
+@onready var rigid_body_2d: Draggable = $"."
 
 var is_dragging = false
 var drag_offset = Vector2(0,0)
