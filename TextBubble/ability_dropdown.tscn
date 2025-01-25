@@ -7,16 +7,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 
 [node name="OptionButton" type="OptionButton" parent="."]
 layout_mode = 0
 offset_right = 217.0
 offset_bottom = 20.0
 toggle_mode = false
-selected = 0
-item_count = 3
+selected = 3
+item_count = 4
 popup/item_0/text = "Trace"
 popup/item_1/text = "Lie Detect"
 popup/item_1/id = 1
 popup/item_2/text = "Phone Logs"
 popup/item_2/id = 2
+popup/item_3/text = "Use Ability?"
+popup/item_3/id = 3

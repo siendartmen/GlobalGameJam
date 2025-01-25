@@ -18,3 +18,6 @@ func _process(delta: float) -> void:
 
 func set_up(text : TextBubble) :
 	text_bubble = text
+
+func is_hovered() -> bool :
+	return laugh.hovered or cry.hovered or love.hovered

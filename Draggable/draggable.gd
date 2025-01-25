@@ -1,15 +1,18 @@
 class_name Draggable
 extends RigidBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var button: Button = $Button
 
 var is_dragging = false
 var drag_offset = Vector2(0,0)
 var follow_speed = 800
 var auto_rotate_speed = 3
 
-var drag_require_time = .2
+var drag_require_time = .1
 var current_drag_time = 0
 var desire_drag = false
+
+var child_focus = false
 
 var mouse_hovering = false
 
@@ -24,7 +27,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#lerp follow mouse
-	mouse_hover()
+	#mouse_hover()
 	do_drag(delta)
 	restore_rotation(delta)	
 	
@@ -44,10 +47,8 @@ func clicked_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			desire_drag = true
-			if current_drag_time >= drag_require_time :
-				is_dragging = true
-				Singleton.is_dragging_bubble = true
-				drag_offset = get_global_mouse_position() - global_position
+			Singleton.is_dragging_bubble = true
+			
 
 
 func mouse_hover():
@@ -87,6 +88,11 @@ func restore_rotation(delta: float):
 func do_drag(delta: float):
 	if desire_drag:
 		current_drag_time += delta
+		
+		if current_drag_time >= drag_require_time and !is_dragging:
+			is_dragging = true
+			drag_offset = get_global_mouse_position() - global_position
+				
 	if is_dragging:
 		var gain_velocity = ((get_global_mouse_position() - drag_offset) - global_position) * follow_speed
 		var close_dampening = 1 if (distance_to_mouse() > radius()*0) else (1 - (radius() - distance_to_mouse())/radius())
@@ -139,3 +145,15 @@ func top() -> float:
 func bottom() -> float:
 	return global_position.y + radius()
 #endregion
+
+
+
+
+func _on_button_mouse_entered() -> void:
+	mouse_hovering = !is_dragging
+	begin_hover.emit()
+
+
+func _on_button_mouse_exited() -> void:
+	mouse_hovering = false
+	end_hover.emit()
