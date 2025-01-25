@@ -20,13 +20,13 @@ func _input(event: InputEvent) -> void:
 		# Zooming in and out
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			var old_zoom = zoom_level
-			zoom_level = min(zoom_level * 1.1, 2.0)
+			zoom_level = min(zoom_level * 1.1, 4.0)
 			var mouse_world_pos = -((get_global_mouse_position() - camera_offset) / old_zoom)
 			camera_offset += (mouse_world_pos * old_zoom - mouse_world_pos * zoom_level)
 			_update_view()
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			var old_zoom = zoom_level
-			zoom_level = max(zoom_level * 0.9, 0.5)
+			zoom_level = max(zoom_level * 0.9, 0.1)
 			var mouse_world_pos = -((get_global_mouse_position() - camera_offset) / old_zoom)
 			camera_offset += (mouse_world_pos * old_zoom - mouse_world_pos * zoom_level)
 			_update_view()
