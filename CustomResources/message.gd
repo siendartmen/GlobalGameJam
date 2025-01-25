@@ -11,20 +11,21 @@ enum Senders {
 	CAT
 }
 enum Emojis {
+	NONE,
 	ANGRY,
 	THUMBS_UP,
 	CRY,
 }
 
 
-var time: String
-var sender: Senders
-var message: String
-var correct_emoji: Emojis
-var points: int
-var truth: int
-var confused: int
-var original_source: String
+@export var time: String
+@export var sender: Senders
+@export var message: String
+@export var correct_emoji: Emojis
+@export var points: int
+@export var truth: int
+@export var confused: int
+@export var original_source: String
 
 
 func _init(tim: String, s: Senders, m: String, cor: Emojis, p: int, tru: int, con: int, o: String) -> void:
