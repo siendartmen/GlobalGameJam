@@ -3,6 +3,7 @@ extends Node
 
 const DRAGGABLE_BUBBLE = preload("res://TextBubble/draggable_bubble.tscn")
 const Intro = preload("res://CustomResources/intro.gd")
+const Phase1 = preload("res://CustomResources/phase_1.gd")
 
 ##GAME STATS
 var ability_points = 4
@@ -37,7 +38,9 @@ func intro() -> void:
 
 
 func phase_1() -> void:
-	pass
+	var phase_1 = Phase1.new()
+	for message in phase_1.messages:
+		spawn_draggable_bubble(message)
 
 
 func spawn_draggable_bubble(message) -> void:

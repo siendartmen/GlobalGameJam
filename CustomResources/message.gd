@@ -12,6 +12,7 @@ enum Senders {
 }
 enum Emojis {
 	NONE,
+	SHOCKED,
 	ANGRY,
 	THUMBS_UP,
 	CRY,
