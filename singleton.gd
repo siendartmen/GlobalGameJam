@@ -27,27 +27,26 @@ func _ready() -> void:
 
 func intro() -> void:
 	print("intro running")
+	
 	for bubble in INTRO.messages:
 		print(bubble.message)
-		spawn_draggable_bubble(bubble.get_sender_string(), bubble.message, bubble.time)
+		spawn_draggable_bubble(bubble)
 
 
 func phase_1() -> void:
 	pass
 
 
-func spawn_draggable_bubble(sender: String, message: String, timestamp: String) -> void:
+func spawn_draggable_bubble(message: Message) -> void:
 	var new_draggable_bubble = DRAGGABLE_BUBBLE.instantiate()
 	new_draggable_bubble.global_position = Vector2.ZERO
 	main_node.add_child(new_draggable_bubble)
-	call_deferred("init_bubble",new_draggable_bubble,sender,message,timestamp)
+	call_deferred("init_bubble",new_draggable_bubble,message)
 
 
 func init_bubble(new_draggable_bubble, message: Message) -> void:
 	var bubble = new_draggable_bubble.message_bubble.texture_rect;
-	bubble.sender = message.sender
-	bubble.message = message.message
-	bubble.timestamp = message.time
+	bubble.data = message
 
 
 func notify(txt: String, color: Color) -> void:
