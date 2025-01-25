@@ -45,7 +45,7 @@ func phase_1() -> void:
 
 func spawn_draggable_bubble(message) -> void:
 	var new_draggable_bubble = DRAGGABLE_BUBBLE.instantiate()
-	new_draggable_bubble.global_position = Vector2.ZERO
+	new_draggable_bubble.global_position = Vector2(randf() * 100 - 50, randf() * 100 - 50)
 	main_node.add_child(new_draggable_bubble)
 	call_deferred("init_bubble",new_draggable_bubble,message)
 
