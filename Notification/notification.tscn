@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Notification/notification.gd" id="1_52n08"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3etsw"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label"]
 anchors_preset = 3

@@ -53,6 +53,8 @@ position = Vector2(20, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Notification" parent="CanvasLayer" instance=ExtResource("3_a8hds")]
+offset_top = 24.0
+offset_bottom = 47.0
 
 [node name="NotificationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {
