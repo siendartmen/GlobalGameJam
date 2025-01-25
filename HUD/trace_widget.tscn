@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca017opamyma5"]
+
+[ext_resource type="Script" path="res://HUD/trace_widget.gd" id="1_ouhi2"]
+
+[sub_resource type="Gradient" id="Gradient_jns7m"]
+colors = PackedColorArray(0, 0, 0, 1, 0.20871, 0.20871, 0.20871, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c7smf"]
+gradient = SubResource("Gradient_jns7m")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_xnp3v"]
+colors = PackedColorArray(0.966734, 0, 0.448711, 1, 8.66354e-07, 0.714873, 0.79057, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8rapq"]
+gradient = SubResource("Gradient_xnp3v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fy84"]
+texture = SubResource("GradientTexture1D_8rapq")
+
+[node name="TraceLayer" type="CanvasLayer"]
+script = ExtResource("1_ouhi2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -196.5
+offset_right = 296.0
+offset_bottom = 196.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_c7smf")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.5
+offset_top = 37.0
+offset_right = 167.5
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_6fy84")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -11.5
+offset_right = 124.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tracing original source...
+"

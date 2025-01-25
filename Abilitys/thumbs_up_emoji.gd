@@ -1,18 +1,16 @@
-class_name EmojiBaseAbility
-extends BaseAbility
+extends EmojiBaseAbility
 
-static var emoji_type = "BASE"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	req_points = 0
+	emoji_type = "thumbs up"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)
-
+	
 func use_ability(text_bubble:TextBubble) :
 	super(text_bubble)
-	#Show widget that shows the trace
 	
