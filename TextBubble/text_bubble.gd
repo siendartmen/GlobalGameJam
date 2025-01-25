@@ -15,9 +15,6 @@ const EMOJI_BUTTON = preload("res://TextBubble/emoji_button.tscn")
 const ABILITY_DROPDOWN = preload("res://TextBubble/ability_dropdown.tscn")
 
 @export var anim_curve: Curve
-@export var sender = "Lizz"
-var message = "Hi, how are you doing?\nI've had a really rough week. Can we talk? It would mean a lot"
-var timestamp = "8:15am"
 
 var data:Message = null
 
@@ -74,7 +71,7 @@ func _end_hover():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if sender_label == null or message_label == null or timestamp_label == null:
+	if data == null or sender_label == null or message_label == null or timestamp_label == null:
 		return  # Wait until all labels are properly initialized
 	
 	time_from_creation += delta
@@ -95,16 +92,16 @@ func display_text():
 		v_box_container.scale = Vector2(1,1-abs(time_from_creation/time_to_begin))
 		return
 	
-	var use = min(chars, sender.length())
-	sender_label.text = "[b]" + sender.substr(0,use)
+	var use = min(chars, data.get_sender_string().length())
+	sender_label.text = "[b]" + data.get_sender_string().substr(0,use)
 	chars -= use
 	
-	use = min(chars, message.length())
-	message_label.text = message.substr(0,use)
+	use = min(chars, data.message.length())
+	message_label.text = data.message.substr(0,use)
 	chars -= use
 	
-	use = min(chars, timestamp.length())
-	timestamp_label.text = timestamp.substr(0,use)
+	use = min(chars, data.time.length())
+	timestamp_label.text = data.time.substr(0,use)
 	
 	#set size based on amount of text
 	var height = message_label.get_content_height()
