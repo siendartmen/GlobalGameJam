@@ -123,7 +123,7 @@ func animate_emoji(delta : float) :
 	if reaction_emoji_icon != null and emoji_add_time >= 0:
 		emoji_add_time -= delta * 2
 		
-		var size = anim_curve.sample(1- emoji_add_time)*80
+		var size = anim_curve.sample(1- emoji_add_time)*66
 		reaction_emoji_icon.button.size = Vector2(size,size)
 	
 func add_emoji(type : MessageClass.Emojis, texture : Texture) :
