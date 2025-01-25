@@ -12,9 +12,11 @@ func use_ability(text_bubble:TextBubble,type) :
 	var nodeHolder = Node.new()
 	nodeHolder.set_script(type)
 	main_node.add_child(nodeHolder)
-	if ability_points >= t.req_points :  ability_points -= t.req_points
-	nodeHolder.use_ability(text_bubble)
-	print("USE SINGLETON")
+	if ability_points >= t.get_points() : 
+		ability_points -= t.get_points()
+		nodeHolder.use_ability(text_bubble)
+	else :
+		notify("Not enough points to use ability", Color(1,0.1,0.1))
 ##
 
 var main_camera: Camera2D
