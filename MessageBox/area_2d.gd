@@ -11,12 +11,11 @@ var tween: Tween             # Tween node for smooth animations
 
 var shrinking:Node2D = null
 
-func _ready() -> void:
-	tween = create_tween()
 
 func _process(delta: float) -> void:
-	if shrinking != null :
-		freeze_bubble(shrinking)
+	pass
+	#if shrinking != null :
+		#freeze_bubble(shrinking)
 		
 		
 	
@@ -31,31 +30,30 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 func add_bubble_to_list(body: Node2D) -> void:
 	print("adding bubble", bubbles_list)
 	bubbles_list.append(body)
-	body.set_freeze_enabled(true)  # Freeze its physics
-	body.linear_velocity = Vector2.ZERO  # Stop any movement
+	call_deferred("freeze_bubble", body)
 	
 	# Move and shrink the bubble
 	shrink_and_freeze_bubble(body)
-	
-	# Scroll other bubbles to make space
-	scroll_bubbles_up()
-	
+
+func freeze_bubble(bubble) -> void:
+	bubble.freeze = true
+	bubble.linear_velocity = Vector2.ZERO
+	bubble.rigid_body_2d.collision_layer = 0
+	bubble.rigid_body_2d.collision_mask = 0
+
+
 # Shrink the bubble into the message box
 func shrink_and_freeze_bubble(bubble: Node2D) -> void:
 	print("freezing and shrinking ")
 	var tween = get_tree().create_tween()
-
+	
 	# Shrink the bubble
 	var size = Vector2(0.5, 0.5)
 	tween.tween_property(bubble, "scale", size, SHRINK_DURATION)
-
+	
 	# Add a callback to freeze the bubble after shrinking
 	tween.tween_callback(freeze_bubble_final.bind(bubble, size, tween))
 
-func freeze_bubble(bubble: Node2D) -> void:
-	bubble.set_freeze_enabled(true)  # Stop all forces and movements
-	bubble.rigid_body_2d.collision_layer = 0
-	bubble.rigid_body_2d.collision_mask = 0
 
 func freeze_bubble_final(bubble: Node2D, size:Vector2, tween) :
 	freeze_bubble(bubble)
