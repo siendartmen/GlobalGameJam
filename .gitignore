@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+MacOS.zip
+Linux.x86_64
+*.pck
+Windows.exe
