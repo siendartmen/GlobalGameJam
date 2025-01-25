@@ -8,7 +8,7 @@ var ability_points = 4
 
 func use_ability(text_bubble:TextBubble,type) :
 	var t = type.new()
-	if ability_points >= t.req_points :  t.req_points -= 1
+	if ability_points >= t.req_points :  ability_points -= t.req_points
 	t.use_ability(text_bubble)
 	print("USE SINGLETON")
 ##
