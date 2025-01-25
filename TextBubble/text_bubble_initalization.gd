@@ -1,4 +1,5 @@
 extends VBoxContainer
+
 @onready var texture_rect: TextBubble = $TextureRect
 
 

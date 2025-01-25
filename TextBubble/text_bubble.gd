@@ -19,6 +19,8 @@ const ABILITY_DROPDOWN = preload("res://TextBubble/ability_dropdown.tscn")
 var message = "Hi, how are you doing?\nI've had a really rough week. Can we talk? It would mean a lot"
 var timestamp = "8:15am"
 
+var data:Message = null
+
 #customizable
 var time_per_char = .1
 var time_to_begin = -0.5

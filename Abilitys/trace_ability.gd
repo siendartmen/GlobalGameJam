@@ -2,7 +2,7 @@ extends BaseAbility
 
 const TRACE_WIDGET = preload("res://HUD/trace_widget.tscn")
 
-var myWidget:CanvasLayer = null
+var myWidget:TraceWidget = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -11,6 +11,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)
+	if myWidget.current_time <= 0 :
+		myWidget.label.text = "Trace Complete: [duration " + myWidget.time_for_trace + "]"\
+		+ ""
+	if myWidget.current_time <= -3 :
+		Singleton.canvas_layer.remove_child(myWidget)
+		
 
 func use_ability(text_bubble:TextBubble) :
 	super(text_bubble)
