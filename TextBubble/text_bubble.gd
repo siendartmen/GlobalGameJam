@@ -4,25 +4,31 @@ extends Node
 @onready var timestamp_label: Label = $TimestampLabel
 @onready var v_box_container: VBoxContainer = $".."
 @onready var texture_rect_2: TextureRect = $"../TextureRect2"
+@onready var texture_rect: TextureRect = $"."
 
 
-var sender = "Lizz"
-var message = "Hi, how are you doing?\nI've had a really rough week. Can we talk? It would mean a lot."
+@export var sender = "Lizz"
+var message = "Hi, how are you doing?\nI've had a really rough week. Can we talk? It would mean a lot.
+I've had a really rough week. Can we talk? It would mean a lot.
+I've had a really rough week. Can we talk? It would mean a lot.
+I've had a really rough week. Can we talk? It would mean a lot."
 var timestamp = "8:15am"
 
 var time_per_char = .1
 
-var time_from_creation = -1
+var time_to_begin = -0.5
+var time_from_creation = time_to_begin
 var char_displayed = 0
 
 var lerp_height_speed = 0.05
 var last_height = 0.0
 
-var default_height = 165
+var default_height = 185
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	v_box_container.size = Vector2(v_box_container.size.x, 0)
+	set_height(0)
+	v_box_container.scale = Vector2(1,0)
 	
 
 
@@ -43,6 +49,9 @@ func display_text():
 		sender_label.text = ""
 		message_label.text = ""
 		timestamp_label.text = ""
+		var f = 1-abs(time_from_creation/time_to_begin)
+		
+		v_box_container.scale = Vector2(1,1-abs(time_from_creation/time_to_begin))
 		return
 	
 	var use = min(chars, sender.length())
@@ -59,9 +68,13 @@ func display_text():
 	#set size based on amount of text
 	var height = message_label.get_content_height()
 	last_height = last_height*(1-lerp_height_speed) + height*(lerp_height_speed)
+	set_height(default_height + last_height)
 	
-	v_box_container.size = Vector2(v_box_container.size.x, default_height + last_height)
 	set_bar_stretch()
+
+func set_height(height : float ):
+	v_box_container.size = Vector2(v_box_container.size.x,height)
 	
 func set_bar_stretch():
-	texture_rect_2.size_flags_stretch_ratio = 0.4 - clampf((last_height/35)*0.1, 0, 0.5)
+	var bottom_line_height = 1
+	texture_rect_2.size_flags_stretch_ratio = bottom_line_height / (bottom_line_height + (last_height/35))

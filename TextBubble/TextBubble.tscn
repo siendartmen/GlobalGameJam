@@ -71,5 +71,4 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 texture = ExtResource("3_4mrl6")
 expand_mode = 1
-script = ExtResource("1_g42c4")
 metadata/_edit_use_anchors_ = true
