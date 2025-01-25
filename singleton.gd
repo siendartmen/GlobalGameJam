@@ -8,15 +8,26 @@ var main_node: MainNode
 
 var is_dragging_bubble := false
 
+
 func _ready() -> void:
-	spawn_draggable_bubble("Jill","Okay, we need to talk","8:11pm")
+	intro()
+
+
+func intro() -> void:
+	spawn_draggable_bubble("Quail","Dude omg, did you hear what happened with Nick last night?","9:11am")
+
+
+func phase_1() -> void:
+	pass
+
 
 func spawn_draggable_bubble(sender :String, message :String, timestamp :String) -> void:
 	var new_draggable_bubble = DRAGGABLE_BUBBLE.instantiate()
 	new_draggable_bubble.global_position = Vector2.ZERO
 	main_node.add_child(new_draggable_bubble)
 	call_deferred("init_bubble",new_draggable_bubble,sender,message,timestamp)
-	
+
+
 func init_bubble(new_draggable_bubble, sender :String, message :String, timestamp :String) -> void:
 	var bubble = new_draggable_bubble.message_bubble.texture_rect;
 	bubble.sender = sender
