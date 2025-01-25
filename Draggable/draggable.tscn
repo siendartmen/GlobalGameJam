@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Draggable/draggable.gd" id="1_aogv7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll26f"]
-size = Vector2(510, 322)
+size = Vector2(490, 300)
 
 [node name="RigidBody2D" type="RigidBody2D"]
 gravity_scale = 0.0
