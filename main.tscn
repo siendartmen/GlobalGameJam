@@ -6,8 +6,10 @@
 [node name="Main" type="Node2D"]
 
 [node name="Camera2D" parent="." instance=ExtResource("2_8wjr4")]
+position = Vector2(575, 324)
 
 [node name="FOLDER" type="Node2D" parent="."]
+position = Vector2(-46, 57)
 
 [node name="Draggable" parent="FOLDER" instance=ExtResource("1_8mhl6")]
 position = Vector2(288, 227)
