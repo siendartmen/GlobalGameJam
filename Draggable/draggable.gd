@@ -8,7 +8,7 @@ var drag_offset = Vector2(0,0)
 var follow_speed = 800
 var auto_rotate_speed = 3
 
-var drag_require_time = .1
+var drag_require_time = 0
 var current_drag_time = 0
 var desire_drag = false
 
@@ -28,6 +28,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#lerp follow mouse
 	#mouse_hover()
+	print(desire_drag)
 	do_drag(delta)
 	restore_rotation(delta)	
 	
@@ -86,6 +87,7 @@ func restore_rotation(delta: float):
 		rotation_degrees = rotation_degrees * (1 - delta * auto_rotate_speed * (max_velocity_for_auto_rotate - linear_velocity.length())/max_velocity_for_auto_rotate )
 
 func do_drag(delta: float):
+	
 	if desire_drag:
 		current_drag_time += delta
 		

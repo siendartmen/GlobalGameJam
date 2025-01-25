@@ -9,21 +9,25 @@
 offset_right = 501.0
 offset_bottom = 173.0
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/separation = 20
 script = ExtResource("1_lppg1")
 
 [node name="Laugh" parent="." instance=ExtResource("1_mouft")]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 emoji_icon = ExtResource("2_n3q7q")
 
 [node name="Cry" parent="." instance=ExtResource("1_mouft")]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 emoji_type = "cry"
 
 [node name="Love" parent="." instance=ExtResource("1_mouft")]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 emoji_type = "love"
 emoji_icon = ExtResource("3_1ahpl")
