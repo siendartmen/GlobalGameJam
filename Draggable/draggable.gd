@@ -1,3 +1,4 @@
+class_name Draggable
 extends RigidBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
@@ -5,6 +6,11 @@ var is_dragging = false
 var drag_offset = Vector2(0,0)
 var follow_speed = 800
 var auto_rotate_speed = 3
+
+var mouse_hovering = false
+
+signal begin_hover
+signal end_hover
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +20,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#lerp follow mouse
+	mouse_hover()
 	do_drag(delta)
 	restore_rotation(delta)	
 	
@@ -34,6 +41,15 @@ func clicked_input(event: InputEvent) -> void:
 			Singleton.is_dragging_bubble = true
 			drag_offset = get_global_mouse_position() - global_position
 
+
+func mouse_hover():
+	var hover = !is_dragging and distance_to_mouse() < radius()
+	if hover != mouse_hovering :
+		mouse_hovering = hover
+		if(hover) :
+			begin_hover.emit()
+		else :
+			end_hover.emit()
 
 #region Physics
 func _physics_process(delta: float) -> void:

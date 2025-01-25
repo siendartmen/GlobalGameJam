@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7aibsec81r2v"]
+
+[ext_resource type="Texture2D" uid="uid://wnrs2bg2qfrl" path="res://Images/CryFaceEmoji.png" id="1_t51vv"]
+[ext_resource type="Script" path="res://TextBubble/emoji_button.gd" id="2_nvgg3"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_icons/icon = ExtResource("1_t51vv")
+script = ExtResource("2_nvgg3")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

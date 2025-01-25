@@ -12,3 +12,6 @@ script = ExtResource("1_aogv7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ll26f")
+
+[connection signal="begin_hover" from="." to="." method="_on_begin_hover"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -6,31 +6,35 @@ extends Node
 @onready var texture_rect_2: TextureRect = $"../TextureRect2"
 @onready var texture_rect: TextureRect = $"."
 
-
 @export var sender = "Lizz"
-var message = "Hi, how are you doing?\nI've had a really rough week. Can we talk? It would mean a lot.
-I've had a really rough week. Can we talk? It would mean a lot.
-I've had a really rough week. Can we talk? It would mean a lot.
-I've had a really rough week. Can we talk? It would mean a lot."
+var message = "Hi, how are you doing?\nI've had a really rough week. Can we talk? It would mean a lot"
 var timestamp = "8:15am"
 
+#customizable
 var time_per_char = .1
-
 var time_to_begin = -0.5
+var lerp_height_speed = 0.05
+var default_height = 185
+
+#dynamic
 var time_from_creation = time_to_begin
 var char_displayed = 0
-
-var lerp_height_speed = 0.05
 var last_height = 0.0
-
-var default_height = 185
+var parent_draggable: Draggable = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_height(0)
 	v_box_container.scale = Vector2(1,0)
-	
+	parent_draggable = get_parent().get_parent()
+	parent_draggable.begin_hover.connect(_begin_hover)
+	parent_draggable.end_hover.connect(_end_hover)
 
+func _begin_hover():
+	pass
+	
+func _end_hover():
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
