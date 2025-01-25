@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8aqyhkcva3eb"]
+[gd_scene load_steps=4 format=3 uid="uid://c8aqyhkcva3eb"]
 
 [ext_resource type="Script" path="res://area_2d.gd" id="1_smnke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gj4a7"]
 size = Vector2(251, 646.5)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vigpb"]
 
 [node name="Message Box" type="Node2D"]
 
@@ -15,3 +17,8 @@ script = ExtResource("1_smnke")
 position = Vector2(-0.5, 0.25)
 shape = SubResource("RectangleShape2D_gj4a7")
 debug_color = Color(0.677764, 0.420572, 0.7307, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1001.46, 323.761)
+scale = Vector2(-252.603, 643.897)
+texture = SubResource("PlaceholderTexture2D_vigpb")

@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c051ohr8cdrur"]
+[gd_scene load_steps=5 format=3 uid="uid://c051ohr8cdrur"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4ygwd"]
 [ext_resource type="PackedScene" uid="uid://favx3xqj4804" path="res://MainCamera.tscn" id="2_8wjr4"]
-[ext_resource type="PackedScene" path="res://TextBubble/draggable_bubble.tscn" id="2_cja3j"]
+[ext_resource type="PackedScene" uid="uid://bgioliqw6ydx7" path="res://TextBubble/draggable_bubble.tscn" id="2_cja3j"]
+[ext_resource type="PackedScene" uid="uid://c8aqyhkcva3eb" path="res://MessageBox/message_box.tscn" id="4_8w7qi"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4ygwd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Message Box" parent="CanvasLayer" instance=ExtResource("4_8w7qi")]
+position = Vector2(22, 1)
 
 [node name="Camera2D" parent="." instance=ExtResource("2_8wjr4")]
 position = Vector2(575, 324)
