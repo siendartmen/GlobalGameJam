@@ -28,8 +28,8 @@ func _process(delta: float) -> void:
 
 
 func _on_option_button_item_selected(index: int) -> void:
-	
 	Singleton.use_ability(text_bubble, Abilitys[index])
+	self.visible = false
 
 func _on_option_button_mouse_entered() -> void:
 	hovered = true

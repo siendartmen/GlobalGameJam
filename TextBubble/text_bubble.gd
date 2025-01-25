@@ -122,8 +122,8 @@ func set_bar_stretch():
 
 func animate_emoji(delta : float) :
 	if reaction_emoji_icon != null and emoji_add_time >= 0:
-		emoji_add_time -= delta
-		print(emoji_add_time)
+		emoji_add_time -= delta * 2
+		
 		var size = anim_curve.sample(1- emoji_add_time)*80
 		reaction_emoji_icon.button.size = Vector2(size,size)
 	
