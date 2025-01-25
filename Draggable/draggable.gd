@@ -7,6 +7,10 @@ var drag_offset = Vector2(0,0)
 var follow_speed = 800
 var auto_rotate_speed = 3
 
+var drag_require_time = .2
+var current_drag_time = 0
+var desire_drag = false
+
 var mouse_hovering = false
 
 signal begin_hover
@@ -32,14 +36,18 @@ func _input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
 			is_dragging = false
 			Singleton.is_dragging_bubble = false
+			current_drag_time = 0
+			desire_drag = false
 
 
 func clicked_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			is_dragging = true
-			Singleton.is_dragging_bubble = true
-			drag_offset = get_global_mouse_position() - global_position
+			desire_drag = true
+			if current_drag_time >= drag_require_time :
+				is_dragging = true
+				Singleton.is_dragging_bubble = true
+				drag_offset = get_global_mouse_position() - global_position
 
 
 func mouse_hover():
@@ -77,6 +85,8 @@ func restore_rotation(delta: float):
 		rotation_degrees = rotation_degrees * (1 - delta * auto_rotate_speed * (max_velocity_for_auto_rotate - linear_velocity.length())/max_velocity_for_auto_rotate )
 
 func do_drag(delta: float):
+	if desire_drag:
+		current_drag_time += delta
 	if is_dragging:
 		var gain_velocity = ((get_global_mouse_position() - drag_offset) - global_position) * follow_speed
 		var close_dampening = 1 if (distance_to_mouse() > radius()*0) else (1 - (radius() - distance_to_mouse())/radius())

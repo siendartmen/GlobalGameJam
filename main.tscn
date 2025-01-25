@@ -1,17 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c051ohr8cdrur"]
+[gd_scene load_steps=4 format=3 uid="uid://c051ohr8cdrur"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4ygwd"]
 [ext_resource type="PackedScene" uid="uid://favx3xqj4804" path="res://MainCamera.tscn" id="2_8wjr4"]
 [ext_resource type="PackedScene" uid="uid://bgioliqw6ydx7" path="res://TextBubble/draggable_bubble.tscn" id="2_cja3j"]
-[ext_resource type="PackedScene" uid="uid://c8aqyhkcva3eb" path="res://MessageBox/message_box.tscn" id="4_8w7qi"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4ygwd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Message Box" parent="CanvasLayer" instance=ExtResource("4_8w7qi")]
-position = Vector2(22, 1)
 
 [node name="Camera2D" parent="." instance=ExtResource("2_8wjr4")]
 position = Vector2(575, 324)
@@ -21,9 +17,15 @@ position = Vector2(-46, 57)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("2_cja3j")]
 position = Vector2(343, 244)
+collision_layer = 3
+collision_mask = 3
 
 [node name="RigidBody2D2" parent="." instance=ExtResource("2_cja3j")]
 position = Vector2(686, 548)
+collision_layer = 3
+collision_mask = 3
 
 [node name="RigidBody2D3" parent="." instance=ExtResource("2_cja3j")]
 position = Vector2(910, 139)
+collision_layer = 3
+collision_mask = 3
