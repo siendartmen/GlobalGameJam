@@ -1,6 +1,8 @@
+class_name TraceWidget
 extends CanvasLayer
 
 @onready var progress_bar: ProgressBar = $ProgressBar
+@onready var label: Label = $Label
 
 var time_for_trace = 3
 var current_time = time_for_trace
