@@ -30,7 +30,6 @@ func intro() -> void:
 	
 	for bubble in INTRO.messages:
 		print(bubble.message)
-		spawn_draggable_bubble(bubble)
 
 
 func phase_1() -> void:
