@@ -1,11 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://c051ohr8cdrur"]
+[gd_scene load_steps=9 format=3 uid="uid://c051ohr8cdrur"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_4ygwd"]
 [ext_resource type="PackedScene" uid="uid://favx3xqj4804" path="res://MainCamera.tscn" id="2_8wjr4"]
-[ext_resource type="PackedScene" uid="uid://bgioliqw6ydx7" path="res://TextBubble/draggable_bubble.tscn" id="2_cja3j"]
 [ext_resource type="PackedScene" uid="uid://cfiwibllliawv" path="res://Notification/notification.tscn" id="3_a8hds"]
 [ext_resource type="PackedScene" uid="uid://c8aqyhkcva3eb" path="res://MessageBox/message_box.tscn" id="4_qm6br"]
 [ext_resource type="PackedScene" uid="uid://cx8vis8y10qm7" path="res://HUD/hud_widgit.tscn" id="5_x0x0m"]
+
+[sub_resource type="Animation" id="Animation_rtl6l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Notification:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -51)]
+}
 
 [sub_resource type="Animation" id="Animation_63xy5"]
 resource_name = "notify"
@@ -20,22 +34,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 4, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(875, 682), Vector2(875, 625), Vector2(875, 625), Vector2(875, 682)]
-}
-
-[sub_resource type="Animation" id="Animation_rtl6l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Notification:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(875, 625)]
+"values": [Vector2(0, -67), Vector2(0, 0), Vector2(0, 0), Vector2(0, -67)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_twocv"]
@@ -53,8 +52,17 @@ position = Vector2(20, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Notification" parent="CanvasLayer" instance=ExtResource("3_a8hds")]
-offset_top = 24.0
-offset_bottom = 47.0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = -51.0
+offset_right = 277.0
+offset_bottom = -28.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="NotificationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {
@@ -66,11 +74,5 @@ position = Vector2(575, 324)
 
 [node name="FOLDER" type="Node2D" parent="."]
 position = Vector2(-46, 57)
-
-[node name="RigidBody2D" parent="." instance=ExtResource("2_cja3j")]
-position = Vector2(1030, 143)
-collision_layer = 3
-collision_mask = 3
-can_sleep = true
 
 [node name="CanvasLayer2" parent="." instance=ExtResource("5_x0x0m")]
