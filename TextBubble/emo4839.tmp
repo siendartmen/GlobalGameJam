@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsi3mmflvmfsu"]
+
+[ext_resource type="Script" path="res://TextBubble/emoji_popup.gd" id="1_lppg1"]
+[ext_resource type="PackedScene" uid="uid://b7aibsec81r2v" path="res://TextBubble/emoji_button.tscn" id="1_mouft"]
+[ext_resource type="Texture2D" uid="uid://ce8utb3f6w2vv" path="res://Images/ThumbsUpEmoji.png" id="3_ma7i0"]
+[ext_resource type="Texture2D" uid="uid://t5iebavu7xlt" path="res://Images/AngryEmoji.png" id="4_e508x"]
+[ext_resource type="Texture2D" uid="uid://wnegggukf0ar" path="res://Images/CryEmoji.png" id="5_mn7wv"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+offset_right = 501.0
+offset_bottom = 173.0
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 20
+script = ExtResource("1_lppg1")
+
+[node name="Laugh" parent="." instance=ExtResource("1_mouft")]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+emoji_type = 2
+emoji_icon = ExtResource("3_ma7i0")
+
+[node name="Cry" parent="." instance=ExtResource("1_mouft")]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+emoji_icon = ExtResource("4_e508x")
+
+[node name="Love" parent="." instance=ExtResource("1_mouft")]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+emoji_type = 3
+emoji_icon = ExtResource("5_mn7wv")

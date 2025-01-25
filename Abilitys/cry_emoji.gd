@@ -5,3 +5,6 @@ extends EmojiBaseAbility
 func _ready() -> void:
 	super()
 	emoji_type = Message.Emojis.CRY 
+	
+func get_points() -> int :
+	return 0

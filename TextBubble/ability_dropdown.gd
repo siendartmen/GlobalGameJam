@@ -18,7 +18,8 @@ var text_bubble:TextBubble = null
 func _ready() -> void:
 	
 	for i in range(option_button.item_count):
-		option_button.set_item_text(i, option_button.get_item_text(i) + " [ " + str(Singleton.ability_points) + "/" + str(Abilitys[i].req_points) + "]")
+		var points = Abilitys[i].new().get_points()
+		option_button.set_item_text(i, option_button.get_item_text(i) + " [ " + str(Singleton.ability_points) + "/" + str(points) + "]")
 
 
 
