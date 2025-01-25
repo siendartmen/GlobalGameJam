@@ -3,6 +3,16 @@ extends Node
 
 const DRAGGABLE_BUBBLE = preload("res://TextBubble/draggable_bubble.tscn")
 
+##GAME STATS
+var ability_points = 4
+
+func use_ability(text_bubble:TextBubble,type) :
+	var t = type.new()
+	if ability_points >= t.req_points :  t.req_points -= 1
+	t.use_ability(text_bubble)
+	print("USE SINGLETON")
+##
+
 var main_camera: Camera2D
 var main_node: MainNode
 

@@ -28,7 +28,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#lerp follow mouse
 	#mouse_hover()
-	print(desire_drag)
+	
 	do_drag(delta)
 	restore_rotation(delta)	
 	

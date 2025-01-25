@@ -32,6 +32,8 @@ var parent_draggable: Draggable = null
 var emoji_popup:Control = null 
 var ability_dropdown:Control = null 
 
+var emoji_add_time = 0
+
 var reaction_emoji = ""
 var can_use_ability = true
 
@@ -50,17 +52,21 @@ func _begin_hover():
 		ability_container.add_child(emoji_popup)
 	if can_use_ability and ability_dropdown == null:
 		ability_dropdown = ABILITY_DROPDOWN.instantiate()
+		ability_dropdown.text_bubble = self
 		ability_container.add_child(ability_dropdown)
 	
 func _end_hover():
-	if ability_dropdown != null:
+	if !((ability_dropdown != null and !is_hovered()) or (emoji_popup != null and (!is_hovered() or reaction_emoji != "" ))) :
+		return
+		
+	await get_tree().create_timer(0.01).timeout
+	
+	if ability_dropdown != null and !is_hovered():
 		ability_container.remove_child(ability_dropdown)
 		ability_dropdown = null
-	if emoji_popup != null and (!emoji_popup.is_hovered() or reaction_emoji != "" ):
-		await get_tree().create_timer(0.01).timeout
-		if emoji_popup != null and (!emoji_popup.is_hovered() or reaction_emoji != "" ):
-			ability_container.remove_child(emoji_popup)
-			emoji_popup = null
+	if emoji_popup != null and (!is_hovered() or reaction_emoji != "" ):
+		ability_container.remove_child(emoji_popup)
+		emoji_popup = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -104,12 +110,19 @@ func display_text():
 
 func set_height(height : float ):
 	v_box_container.size = Vector2(v_box_container.size.x,height)
+	if parent_draggable != null :
+		parent_draggable.button.size = v_box_container.size + Vector2(0,70)
 	
 func set_bar_stretch():
 	var bottom_line_height = 1
 	texture_rect_2.size_flags_stretch_ratio = bottom_line_height / (bottom_line_height + (last_height/35))
 
+func animate_emoji() :
+	if reaction_emoji != null :
+		pass
+	
 func add_emoji(type : String, texture : Texture) :
+
 	if reaction_emoji == "" :
 		var em = EMOJI_BUTTON.instantiate()
 		em.emoji_type = type
@@ -118,11 +131,18 @@ func add_emoji(type : String, texture : Texture) :
 		reaction_emoji = type
 		ability_container.remove_child(emoji_popup)
 		emoji_popup = null
+		emoji_add_time = .5
 		if ability_dropdown != null:
 			ability_container.remove_child(ability_dropdown)
 			ability_dropdown = null
 	
-
+func is_hovered() -> bool :
+	var eh = false
+	if emoji_popup != null :
+		eh = emoji_popup.is_hovered()
+	if ability_dropdown != null :
+		eh = eh or ability_dropdown.hovered
+	return eh
 
 
 	

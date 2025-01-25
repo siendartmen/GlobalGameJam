@@ -18,14 +18,14 @@ layout_mode = 0
 offset_right = 217.0
 offset_bottom = 20.0
 toggle_mode = false
-selected = 0
+selected = 3
 item_count = 4
-popup/item_0/text = "Use Ability?"
-popup/item_1/text = "Trace"
+popup/item_0/text = "Trace"
+popup/item_1/text = "Lie Detect"
 popup/item_1/id = 1
-popup/item_2/text = "Lie Detect"
+popup/item_2/text = "Phone Logs"
 popup/item_2/id = 2
-popup/item_3/text = "Phone Logs"
+popup/item_3/text = "Use Ability?"
 popup/item_3/id = 3
 
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
