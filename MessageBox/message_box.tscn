@@ -26,4 +26,14 @@ rotation = 3.14159
 scale = Vector2(252.603, -643.897)
 texture = SubResource("PlaceholderTexture2D_vigpb")
 
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+offset_left = -125.0
+offset_top = -353.0
+offset_right = 125.0
+offset_bottom = -324.0
+grow_horizontal = 2
+text = "Message Folder"
+horizontal_alignment = 1
+
 [connection signal="body_shape_entered" from="Area2D" to="Area2D" method="_on_body_shape_entered"]

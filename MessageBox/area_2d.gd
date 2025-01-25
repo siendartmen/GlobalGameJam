@@ -4,9 +4,9 @@ extends Area2D
 
 
 const MAX_BUBBLES = 5        # Maximum visible messages in the chat box
-const SHRINK_DURATION = 2.7  # Duration for shrinking effect
+const SHRINK_DURATION = 0.3  # Duration for shrinking effect
 const SCROLL_DURATION = 0.5  # Duration for scrolling effect
-const BUBBLE_SPACING = 2    # Spacing between bubbles
+const BUBBLE_SPACING = 10    # Spacing between bubbles
 const INTERACTION_LAYER = 2  # Layer for interactable bubbles inside the box
 
 var bubbles_list: Array = [] # List to store active bubbles
@@ -61,6 +61,7 @@ func freeze_bubble_final(bubble: Node2D, size:Vector2, tween) :
 	
 func set_scale_after_tween(bubble: Node2D, size) :
 	bubble.scale = Vector2(0.5, 0.5)
+	bubble.restore_rotation(1)
 	#bubble.position = Vector2(0,0)
 	
 	# Smoothly scroll bubbles upward and reposition them
