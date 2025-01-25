@@ -16,19 +16,7 @@ position = Vector2(575, 324)
 position = Vector2(-46, 57)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("2_cja3j")]
-position = Vector2(343, 244)
-collision_layer = 3
-collision_mask = 3
-can_sleep = true
-
-[node name="RigidBody2D2" parent="." instance=ExtResource("2_cja3j")]
-position = Vector2(686, 548)
-collision_layer = 3
-collision_mask = 3
-can_sleep = true
-
-[node name="RigidBody2D3" parent="." instance=ExtResource("2_cja3j")]
-position = Vector2(910, 139)
+position = Vector2(1030, 143)
 collision_layer = 3
 collision_mask = 3
 can_sleep = true

@@ -44,7 +44,7 @@ func _ready() -> void:
 	parent_draggable.end_hover.connect(_end_hover)
 
 func _begin_hover():
-	if self != null and reaction_emoji == "" and emoji_popup == null:
+	if reaction_emoji == "" and emoji_popup == null:
 		emoji_popup = EMOJI_POPUP.instantiate()
 		emoji_popup.set_up(self)
 		ability_container.add_child(emoji_popup)
@@ -53,13 +53,14 @@ func _begin_hover():
 		ability_container.add_child(ability_dropdown)
 	
 func _end_hover():
-	
-	if emoji_popup != null and (!emoji_popup.is_hovered() or reaction_emoji != "") :
-		ability_container.remove_child(emoji_popup)
-		emoji_popup = null
 	if ability_dropdown != null:
 		ability_container.remove_child(ability_dropdown)
 		ability_dropdown = null
+	if emoji_popup != null and (!emoji_popup.is_hovered() or reaction_emoji != "" ):
+		await get_tree().create_timer(0.01).timeout
+		if emoji_popup != null and (!emoji_popup.is_hovered() or reaction_emoji != "" ):
+			ability_container.remove_child(emoji_popup)
+			emoji_popup = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -103,8 +104,6 @@ func display_text():
 
 func set_height(height : float ):
 	v_box_container.size = Vector2(v_box_container.size.x,height)
-	if parent_draggable != null :
-		parent_draggable.button.size = v_box_container.size
 	
 func set_bar_stretch():
 	var bottom_line_height = 1
@@ -117,7 +116,11 @@ func add_emoji(type : String, texture : Texture) :
 		em.emoji_icon = texture
 		ability_container.add_child(em)
 		reaction_emoji = type
-		_end_hover()
+		ability_container.remove_child(emoji_popup)
+		emoji_popup = null
+		if ability_dropdown != null:
+			ability_container.remove_child(ability_dropdown)
+			ability_dropdown = null
 	
 
 
