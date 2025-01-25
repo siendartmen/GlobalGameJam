@@ -13,7 +13,7 @@ extends Node
 const EMOJI_POPUP = preload("res://TextBubble/emoji_popup.tscn")
 const EMOJI_BUTTON = preload("res://TextBubble/emoji_button.tscn")
 const ABILITY_DROPDOWN = preload("res://TextBubble/ability_dropdown.tscn")
-
+const MessageClass = preload("res://CustomResources/message.gd")
 @export var anim_curve: Curve
 
 var data:Message = null
@@ -34,7 +34,7 @@ var ability_dropdown:Control = null
 
 var emoji_add_time = 0
 
-var reaction_emoji = ""
+var reaction_emoji = MessageClass.Emojis.NONE
 var reaction_emoji_icon: Control = null
 var can_use_ability = true
 
@@ -47,7 +47,7 @@ func _ready() -> void:
 	parent_draggable.end_hover.connect(_end_hover)
 
 func _begin_hover():
-	if reaction_emoji == "" and emoji_popup == null:
+	if reaction_emoji == MessageClass.Emojis.NONE and emoji_popup == null:
 		emoji_popup = EMOJI_POPUP.instantiate()
 		emoji_popup.set_up(self)
 		ability_container.add_child(emoji_popup)
@@ -65,7 +65,7 @@ func _end_hover():
 	if ability_dropdown != null and !is_hovered():
 		ability_container.remove_child(ability_dropdown)
 		ability_dropdown = null
-	if emoji_popup != null and (!is_hovered() or reaction_emoji != "" ):
+	if emoji_popup != null and (!is_hovered() or reaction_emoji != MessageClass.Emojis.NONE ):
 		ability_container.remove_child(emoji_popup)
 		emoji_popup = null
 
@@ -126,9 +126,9 @@ func animate_emoji(delta : float) :
 		var size = anim_curve.sample(1- emoji_add_time)*80
 		reaction_emoji_icon.button.size = Vector2(size,size)
 	
-func add_emoji(type : String, texture : Texture) :
+func add_emoji(type : MessageClass.Emojis, texture : Texture) :
 
-	if reaction_emoji == "" :
+	if reaction_emoji == MessageClass.Emojis.NONE :
 		var em = EMOJI_BUTTON.instantiate()
 		em.emoji_type = type
 		em.emoji_icon = texture

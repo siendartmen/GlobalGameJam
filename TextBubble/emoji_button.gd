@@ -1,7 +1,9 @@
 extends Panel
 @onready var button: Button = $Button
 
-@export var emoji_type = "laugh"
+const Message = preload("res://CustomResources/message.gd")
+
+@export var emoji_type = Message.Emojis.ANGRY
 @export var emoji_icon = preload("res://Images/CryFaceEmoji.png")
 const EmojiAbility = preload("res://Abilitys/emoji_ability.gd")
 

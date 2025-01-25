@@ -7,7 +7,6 @@ static var emoji_type = Message.Emojis.NONE
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	req_points = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

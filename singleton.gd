@@ -2,7 +2,8 @@ extends Node
 
 
 const DRAGGABLE_BUBBLE = preload("res://TextBubble/draggable_bubble.tscn")
-const INTRO: Phase = preload("res://CustomResources/Intro.tres")
+const Intro = preload("res://CustomResources/intro.gd")
+const Phase1 = preload("res://CustomResources/phase_1.gd")
 
 ##GAME STATS
 var ability_points = 4
@@ -12,9 +13,11 @@ func use_ability(text_bubble:TextBubble,type) :
 	var nodeHolder = Node.new()
 	nodeHolder.set_script(type)
 	main_node.add_child(nodeHolder)
-	if ability_points >= t.req_points :  ability_points -= t.req_points
-	nodeHolder.use_ability(text_bubble)
-	print("USE SINGLETON")
+	if ability_points >= t.get_points() : 
+		ability_points -= t.get_points()
+		nodeHolder.use_ability(text_bubble)
+	else :
+		notify("Not enough points to use ability", Color(1,0.1,0.1))
 ##
 
 var main_camera: Camera2D
@@ -29,12 +32,15 @@ func _ready() -> void:
 
 
 func intro() -> void:
-	for message in INTRO.messages:
+	var intro = Intro.new()
+	for message in intro.messages:
 		spawn_draggable_bubble(message)
 
 
 func phase_1() -> void:
-	pass
+	var phase_1 = Phase1.new()
+	for message in phase_1.messages:
+		spawn_draggable_bubble(message)
 
 
 func spawn_draggable_bubble(message) -> void:
@@ -50,4 +56,6 @@ func init_bubble(new_draggable_bubble, message: Message) -> void:
 
 
 func notify(txt: String, color: Color) -> void:
-	pass
+	main_node.notification.text = txt
+	main_node.notification.color_rect.color = color
+	main_node.notification_player.play("notify")
