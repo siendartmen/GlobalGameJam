@@ -27,9 +27,10 @@ func _ready() -> void:
 
 func intro() -> void:
 	print("intro running")
-	
-	for bubble in INTRO.messages:
-		print(bubble.message)
+	print(INTRO)
+	for message in INTRO.messages:
+		print(message.message)
+		#spawn_draggable_bubble(message)
 
 
 func phase_1() -> void:
