@@ -3,11 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://wnrs2bg2qfrl" path="res://Images/CryFaceEmoji.png" id="1_t51vv"]
 [ext_resource type="Script" path="res://TextBubble/emoji_button.gd" id="2_nvgg3"]
 
-[node name="Button" type="Button"]
-custom_minimum_size = Vector2(40, 40)
-offset_right = 8.0
-offset_bottom = 8.0
-theme_override_icons/icon = ExtResource("1_t51vv")
+[node name="Panel" type="Panel"]
+offset_right = 100.0
+offset_bottom = 100.0
 script = ExtResource("2_nvgg3")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_right = 44.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/icon_max_width = 80
+theme_override_icons/icon = ExtResource("1_t51vv")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]

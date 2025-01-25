@@ -1,3 +1,5 @@
+class_name TextBubble
+
 extends Node
 @onready var sender_label: RichTextLabel = $SenderLabel
 @onready var message_label: RichTextLabel = $MessageLabel
@@ -5,6 +7,11 @@ extends Node
 @onready var v_box_container: VBoxContainer = $".."
 @onready var texture_rect_2: TextureRect = $"../TextureRect2"
 @onready var texture_rect: TextureRect = $"."
+@onready var ability_container: VBoxContainer = $"../TextureRect2/AbilityContainer"
+
+#to create
+const EMOJI_POPUP = preload("res://TextBubble/emoji_popup.tscn")
+const EMOJI_BUTTON = preload("res://TextBubble/emoji_button.tscn")
 
 @export var sender = "Lizz"
 var message = "Hi, how are you doing?\nI've had a really rough week. Can we talk? It would mean a lot"
@@ -21,6 +28,9 @@ var time_from_creation = time_to_begin
 var char_displayed = 0
 var last_height = 0.0
 var parent_draggable: Draggable = null
+var emoji_popup:Control = null 
+
+var reaction_emoji = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,10 +41,15 @@ func _ready() -> void:
 	parent_draggable.end_hover.connect(_end_hover)
 
 func _begin_hover():
-	pass
+	if self != null && reaction_emoji == "" :
+		emoji_popup = EMOJI_POPUP.instantiate()
+		emoji_popup.set_up(self)
+		ability_container.add_child(emoji_popup)
 	
 func _end_hover():
-	pass
+	if emoji_popup != null :
+		emoji_popup.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+		ability_container.remove_child(emoji_popup)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -82,3 +97,10 @@ func set_height(height : float ):
 func set_bar_stretch():
 	var bottom_line_height = 1
 	texture_rect_2.size_flags_stretch_ratio = bottom_line_height / (bottom_line_height + (last_height/35))
+
+func add_emoji(type : String, texture : Texture) :
+	var em = EMOJI_BUTTON.instantiate()
+	em.emoji_type = type
+	em.emoji_icon = texture
+	ability_container.add_child(em)
+	reaction_emoji = type
