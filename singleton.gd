@@ -26,9 +26,6 @@ func _ready() -> void:
 
 
 func intro() -> void:
-	print("intro running")
-	print(INTRO)
-	print(INTRO.messages)
 	for message in INTRO.messages:
 		print(message.message)
 		spawn_draggable_bubble(message)
