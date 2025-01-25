@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	super(delta)
 	if myWidget != null :
 		if myWidget.current_time <= 0 :
-			myWidget.label.text = "Trace Complete: [duration " + str(myWidget.time_for_trace) + "]"\
+			myWidget.label.text = "Trace Complete: [duration " + str(myWidget.time_for_trace) + " seconds]"\
 			+ "\n\nOriginal source of information: " + (bubble.data.original_source)
 		if myWidget.current_time <= -4 :
 			Singleton.canvas_layer.remove_child(myWidget)
