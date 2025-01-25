@@ -26,26 +26,51 @@ var canvas_layer: CanvasLayer
 
 var is_dragging_bubble := false
 
+var zoom_to = -1
+
 
 func _ready() -> void:
 	intro()
+	main_camera.zoom_level = 1
+	main_camera._update_view()
+
+func _process(delta: float) -> void:
+	#set smooth desired zoom
+	var amount = delta * 0.2
+	if zoom_to != -1 :
+		main_camera.zoom_level = main_camera.zoom_level*(1-amount) + (amount)*zoom_to
+		main_camera._update_view()
+		if abs(main_camera.zoom_level - zoom_to) < 0.05 : zoom_to = -1
 
 
 func intro() -> void:
 	var intro = Intro.new()
-	for message in intro.messages:
-		spawn_draggable_bubble(message)
+	# first message
+	spawn_draggable_bubble(intro.messages[0],Vector2(0,0))
+	await get_tree().create_timer(6).timeout
+	zoom_to = 0.3
+	await get_tree().create_timer(8).timeout
+	
+	for i in range(intro.messages.size()):
+		if i == 0 : continue
+		var message = intro.messages[i]
+		var extra_time = 0
+		if intro.messages[i].sender == intro.messages[i-1].sender : extra_time = 6
+		
+		await get_tree().create_timer(randf()*2.5 + extra_time).timeout
+		
+		spawn_draggable_bubble(message,Vector2(randf() * 2000 - 1000, randf() * 1400 - 700))
 
 
 func phase_1() -> void:
 	var phase_1 = Phase1.new()
 	for message in phase_1.messages:
-		spawn_draggable_bubble(message)
+		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
-func spawn_draggable_bubble(message) -> void:
+func spawn_draggable_bubble(message, position: Vector2) -> void:
 	var new_draggable_bubble = DRAGGABLE_BUBBLE.instantiate()
-	new_draggable_bubble.global_position = Vector2(randf() * 100 - 50, randf() * 100 - 50)
+	new_draggable_bubble.global_position = position
 	main_node.add_child(new_draggable_bubble)
 	call_deferred("init_bubble",new_draggable_bubble,message)
 

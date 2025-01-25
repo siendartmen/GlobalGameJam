@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca017opamyma5"]
+[gd_scene load_steps=8 format=3 uid="uid://ca017opamyma5"]
 
 [ext_resource type="Script" path="res://HUD/trace_widget.gd" id="1_ouhi2"]
+[ext_resource type="Texture2D" uid="uid://dw1vjwpxr27rc" path="res://Images/ExitButton.png" id="2_w0dlu"]
 
 [sub_resource type="Gradient" id="Gradient_jns7m"]
 colors = PackedColorArray(0, 0, 0, 1, 0.20871, 0.20871, 0.20871, 1)
@@ -70,3 +71,21 @@ text = "
 ...Tracing original source...
 "
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 265.0
+offset_top = -204.0
+offset_right = 305.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/icon = ExtResource("2_w0dlu")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
