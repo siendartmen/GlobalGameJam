@@ -11,7 +11,6 @@ position = Vector2(-56.5, 33)
 [node name="TextureRect" parent="." index="1" instance=ExtResource("2_0u12m")]
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 15
-anchor_left = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -312.5

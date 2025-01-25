@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhl5ynthspq45"
-path="res://.godot/imported/bubbbbllllee.png-be2e4923449d7e57136e73a836774cf3.ctex"
+uid="uid://hrwhojwg4tfq"
+path="res://.godot/imported/SpeachBubbleBottom.png-12157a794411478d85ac5c4f4f0a1713.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Draggable/bubbbbllllee.png"
-dest_files=["res://.godot/imported/bubbbbllllee.png-be2e4923449d7e57136e73a836774cf3.ctex"]
+source_file="res://Images/SpeachBubbleBottom.png"
+dest_files=["res://.godot/imported/SpeachBubbleBottom.png-12157a794411478d85ac5c4f4f0a1713.ctex"]
 
 [params]
 
