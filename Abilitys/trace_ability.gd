@@ -11,11 +11,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)
-	if myWidget.current_time <= 0 :
-		myWidget.label.text = "Trace Complete: [duration " + myWidget.time_for_trace + "]"\
-		+ "\n\nOriginal source of information: " + bubble.data.original_source
-	if myWidget.current_time <= -4 :
-		Singleton.canvas_layer.remove_child(myWidget)
+	if myWidget != null :
+		if myWidget.current_time <= 0 :
+			myWidget.label.text = "Trace Complete: [duration " + str(myWidget.time_for_trace) + "]"\
+			+ "\n\nOriginal source of information: " + (bubble.data.original_source)
+		if myWidget.current_time <= -4 :
+			Singleton.canvas_layer.remove_child(myWidget)
+			myWidget = null
 		
 
 func use_ability(text_bubble:TextBubble) :
@@ -23,4 +25,3 @@ func use_ability(text_bubble:TextBubble) :
 	myWidget = TRACE_WIDGET.instantiate()
 	Singleton.canvas_layer.add_child(myWidget)
 	#Show widget that shows the trace
-	print("USE TRACE")

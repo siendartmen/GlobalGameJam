@@ -9,8 +9,11 @@ var ability_points = 4
 
 func use_ability(text_bubble:TextBubble,type) :
 	var t = type.new()
+	var nodeHolder = Node.new()
+	nodeHolder.set_script(type)
+	main_node.add_child(nodeHolder)
 	if ability_points >= t.req_points :  ability_points -= t.req_points
-	t.use_ability(text_bubble)
+	nodeHolder.use_ability(text_bubble)
 	print("USE SINGLETON")
 ##
 

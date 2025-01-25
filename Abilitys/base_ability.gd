@@ -17,4 +17,3 @@ func _process(delta: float) -> void:
 func use_ability(text_bubble:TextBubble) :
 	Singleton.notify("used " + display_name, Color(1, 1, 1))
 	bubble = text_bubble
-	print("USE BASE ABILITY")
