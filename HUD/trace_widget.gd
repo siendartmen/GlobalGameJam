@@ -12,4 +12,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	current_time -= delta
-	progress_bar.value = (time_for_trace-current_time)/time_for_trace
+	progress_bar.value = (time_for_trace-current_time)/time_for_trace*100

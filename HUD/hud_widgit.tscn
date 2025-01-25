@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx8vis8y10qm7"]
+[gd_scene load_steps=3 format=3 uid="uid://cx8vis8y10qm7"]
 
 [ext_resource type="Script" path="res://HUD/hud_widget.gd" id="1_djp7c"]
+[ext_resource type="Script" path="res://HUD/canvas_layer_hud.gd" id="1_rpae1"]
 
 [node name="HudLayer" type="CanvasLayer"]
+script = ExtResource("1_rpae1")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 2

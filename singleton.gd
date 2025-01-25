@@ -15,6 +15,7 @@ func use_ability(text_bubble:TextBubble,type) :
 
 var main_camera: Camera2D
 var main_node: MainNode
+var canvas_layer: CanvasLayer
 
 var is_dragging_bubble := false
 
