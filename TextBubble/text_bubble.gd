@@ -22,7 +22,7 @@ var data:Message = null
 var time_per_char = .1
 var time_to_begin = -0.5
 var lerp_height_speed = 0.05
-var default_height = 185
+var default_height = 220
 
 #dynamic
 var time_from_creation = time_to_begin
@@ -112,8 +112,8 @@ func display_text():
 
 func set_height(height : float ):
 	v_box_container.size = Vector2(v_box_container.size.x,height)
-	if parent_draggable != null :
-		parent_draggable.button.size = v_box_container.size + Vector2(0,70)
+	#if parent_draggable != null :
+		#parent_draggable.button.size = v_box_container.size + Vector2(0,70)
 	
 func set_bar_stretch():
 	var bottom_line_height = 1

@@ -11,6 +11,7 @@ var auto_rotate_speed = 3
 
 var drag_require_time = 0
 var current_drag_time = 0
+var start_drag_time = 0
 var desire_drag = false
 
 var child_focus = false
@@ -34,7 +35,7 @@ func _process(delta: float) -> void:
 	restore_rotation(delta)	
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_click") and distance_to_mouse() < radius() :
+	if event.is_action_pressed("left_click") and mouse_hovering :
 		clicked_input(event)
 		
 	if event is InputEventMouseButton:
@@ -54,7 +55,7 @@ func clicked_input(event: InputEvent) -> void:
 
 
 func mouse_hover():
-	var hover = !is_dragging and distance_to_mouse() < radius()
+	var hover = !is_dragging
 	if hover != mouse_hovering :
 		mouse_hovering = hover
 		if(hover) :
@@ -86,9 +87,10 @@ func restore_rotation(delta: float):
 	var max_velocity_for_auto_rotate = 200
 	if abs(rotation_degrees) > 0 and linear_velocity.length() < max_velocity_for_auto_rotate: 
 		rotation_degrees = rotation_degrees * (1 - delta * auto_rotate_speed * (max_velocity_for_auto_rotate - linear_velocity.length())/max_velocity_for_auto_rotate )
-
+func do_anim_drag(delta: float):
+	pass
 func do_drag(delta: float):
-	
+	do_anim_drag(delta)
 	if desire_drag:
 		current_drag_time += delta
 		
@@ -153,7 +155,7 @@ func bottom() -> float:
 
 
 func _on_button_mouse_entered() -> void:
-	mouse_hovering = !is_dragging
+	mouse_hovering = true
 	begin_hover.emit()
 
 

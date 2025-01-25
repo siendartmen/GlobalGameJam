@@ -5,7 +5,7 @@ extends Control
 var Abilitys = [
 	preload("res://Abilitys/base_ability.gd"),
 	preload("res://Abilitys/trace_ability.gd"),
-	preload("res://Abilitys/trace_ability.gd"),
+	preload("res://Abilitys/lie_detect_ability.gd"),
 	preload("res://Abilitys/trace_ability.gd"),
 	preload("res://Abilitys/trace_ability.gd")
 ]
@@ -18,6 +18,7 @@ var text_bubble:TextBubble = null
 func _ready() -> void:
 	
 	for i in range(option_button.item_count):
+		if i == 0 : continue
 		var points = Abilitys[i].new().get_points()
 		option_button.set_item_text(i, option_button.get_item_text(i) + " [ " + str(Singleton.ability_points) + "/" + str(points) + "]")
 
