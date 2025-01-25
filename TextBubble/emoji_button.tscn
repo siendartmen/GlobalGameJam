@@ -26,8 +26,9 @@ offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme_override_constants/icon_max_width = 80
+theme_override_constants/icon_max_width = 0
 theme_override_icons/icon = ExtResource("1_t51vv")
+expand_icon = true
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

@@ -3,6 +3,7 @@ extends Panel
 
 @export var emoji_type = "laugh"
 @export var emoji_icon = preload("res://Images/CryFaceEmoji.png")
+const EmojiAbility = preload("res://Abilitys/emoji_ability.gd")
 
 var text_bubble:TextBubble = null
 var hovered = false
@@ -18,7 +19,7 @@ func _process(delta: float) -> void:
 func _on_button_button_down() -> void:
 	if text_bubble != null :
 		text_bubble.add_emoji(emoji_type,emoji_icon)
-
+		Singleton.use_ability(text_bubble,EmojiAbility)
 
 func _on_button_mouse_entered() -> void:
 	hovered = true

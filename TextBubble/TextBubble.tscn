@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://jida7ua8oe0o"]
+[gd_scene load_steps=6 format=3 uid="uid://jida7ua8oe0o"]
 
 [ext_resource type="Script" path="res://TextBubble/text_bubble.gd" id="1_g42c4"]
 [ext_resource type="Texture2D" uid="uid://dghgl8vr0ems4" path="res://Images/SpeachBubbleTop.png" id="1_ryttc"]
 [ext_resource type="Script" path="res://TextBubble/text_bubble_initalization.gd" id="1_s4wct"]
 [ext_resource type="Texture2D" uid="uid://hrwhojwg4tfq" path="res://Images/SpeachBubbleBottom.png" id="3_4mrl6"]
+
+[sub_resource type="Curve" id="Curve_wjmpa"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.190751, 2), 0.0, 0.0, 0, 0, Vector2(0.870906, 0.730577), 0.0, 0.0, 0, 0, Vector2(0.996147, 0.999287), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [node name="VBoxContainer" type="VBoxContainer"]
 offset_right = 664.0
@@ -18,6 +23,7 @@ mouse_filter = 2
 texture = ExtResource("1_ryttc")
 expand_mode = 1
 script = ExtResource("1_g42c4")
+anim_curve = SubResource("Curve_wjmpa")
 metadata/_edit_use_anchors_ = true
 
 [node name="SenderLabel" type="RichTextLabel" parent="TextureRect"]

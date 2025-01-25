@@ -14,6 +14,7 @@ const EMOJI_POPUP = preload("res://TextBubble/emoji_popup.tscn")
 const EMOJI_BUTTON = preload("res://TextBubble/emoji_button.tscn")
 const ABILITY_DROPDOWN = preload("res://TextBubble/ability_dropdown.tscn")
 
+@export var anim_curve: Curve
 @export var sender = "Lizz"
 var message = "Hi, how are you doing?\nI've had a really rough week. Can we talk? It would mean a lot"
 var timestamp = "8:15am"
@@ -35,6 +36,7 @@ var ability_dropdown:Control = null
 var emoji_add_time = 0
 
 var reaction_emoji = ""
+var reaction_emoji_icon: Control = null
 var can_use_ability = true
 
 # Called when the node enters the scene tree for the first time.
@@ -76,6 +78,7 @@ func _process(delta: float) -> void:
 	time_from_creation += delta
 	char_displayed = time_from_creation/time_per_char
 	display_text()
+	animate_emoji(delta)
 	
 	
 func display_text():
@@ -117,9 +120,12 @@ func set_bar_stretch():
 	var bottom_line_height = 1
 	texture_rect_2.size_flags_stretch_ratio = bottom_line_height / (bottom_line_height + (last_height/35))
 
-func animate_emoji() :
-	if reaction_emoji != null :
-		pass
+func animate_emoji(delta : float) :
+	if reaction_emoji_icon != null and emoji_add_time >= 0:
+		emoji_add_time -= delta
+		print(emoji_add_time)
+		var size = anim_curve.sample(1- emoji_add_time)*80
+		reaction_emoji_icon.button.size = Vector2(size,size)
 	
 func add_emoji(type : String, texture : Texture) :
 
@@ -127,11 +133,12 @@ func add_emoji(type : String, texture : Texture) :
 		var em = EMOJI_BUTTON.instantiate()
 		em.emoji_type = type
 		em.emoji_icon = texture
+		reaction_emoji_icon = em
 		ability_container.add_child(em)
 		reaction_emoji = type
 		ability_container.remove_child(emoji_popup)
 		emoji_popup = null
-		emoji_add_time = .5
+		emoji_add_time = 1
 		if ability_dropdown != null:
 			ability_container.remove_child(ability_dropdown)
 			ability_dropdown = null

@@ -1,7 +1,12 @@
 extends Control
 
+@onready var option_button: OptionButton = $OptionButton
+
 var Abilitys = [
 	preload("res://Abilitys/base_ability.gd"),
+	preload("res://Abilitys/trace_ability.gd"),
+	preload("res://Abilitys/trace_ability.gd"),
+	preload("res://Abilitys/trace_ability.gd"),
 	preload("res://Abilitys/trace_ability.gd")
 ]
 
@@ -11,7 +16,10 @@ var text_bubble:TextBubble = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	
+	for i in range(option_button.item_count):
+		option_button.set_item_text(i, option_button.get_item_text(i) + " [ " + str(Singleton.ability_points) + "/" + str(Abilitys[i].req_points) + "]")
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
