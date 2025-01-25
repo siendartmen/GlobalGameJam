@@ -3,17 +3,17 @@
 [ext_resource type="Script" path="res://CustomResources/message.gd" id="1_ji7cp"]
 [ext_resource type="Script" path="res://CustomResources/phase.gd" id="2_4wlgl"]
 
-[sub_resource type="Resource" id="Resource_1wnsu"]
+[sub_resource type="Resource" id="Resource_dov2f"]
 script = ExtResource("1_ji7cp")
-time = "9:35pm"
-sender = 0
-message = "OMG, did you hear what happened with Nick last night? "
-correct_emoji = 0
-points = 0
-truth = -1
-confused = 34
-original_source = "Max"
+time = "gdfsg"
+sender = 1
+message = "sgfdgfg"
+correct_emoji = 1
+points = 1
+truth = 1
+confused = 1
+original_source = "dfsgs"
 
 [resource]
 script = ExtResource("2_4wlgl")
-messages = Array[ExtResource("1_ji7cp")]([SubResource("Resource_1wnsu")])
+messages = Array[ExtResource("1_ji7cp")]([SubResource("Resource_dov2f")])

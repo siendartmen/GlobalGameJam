@@ -16,7 +16,6 @@ position = Vector2(20, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Notification" parent="CanvasLayer" instance=ExtResource("3_a8hds")]
-offset_top = -104.0
 
 [node name="Camera2D" parent="." instance=ExtResource("2_8wjr4")]
 position = Vector2(575, 324)

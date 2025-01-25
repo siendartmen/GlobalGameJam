@@ -28,16 +28,17 @@ func _ready() -> void:
 func intro() -> void:
 	print("intro running")
 	print(INTRO)
+	print(INTRO.messages)
 	for message in INTRO.messages:
 		print(message.message)
-		#spawn_draggable_bubble(message)
+		spawn_draggable_bubble(message)
 
 
 func phase_1() -> void:
 	pass
 
 
-func spawn_draggable_bubble(message: Message) -> void:
+func spawn_draggable_bubble(message) -> void:
 	var new_draggable_bubble = DRAGGABLE_BUBBLE.instantiate()
 	new_draggable_bubble.global_position = Vector2.ZERO
 	main_node.add_child(new_draggable_bubble)
