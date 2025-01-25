@@ -13,18 +13,15 @@ blend_mode = 1
 [node name="Message Box" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(1140, 633)
 script = ExtResource("1_smnke")
 
 [node name="Message_Box_Area" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-116.5, -304.5)
 scale = Vector2(0.13, 0.13)
 shape = SubResource("RectangleShape2D_gj4a7")
 debug_color = Color(0.474193, 0.464444, 0.936915, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 material = SubResource("CanvasItemMaterial_2sulc")
-position = Vector2(-118, -308)
 rotation = 3.14159
 scale = Vector2(252.603, -643.897)
 texture = SubResource("PlaceholderTexture2D_vigpb")
