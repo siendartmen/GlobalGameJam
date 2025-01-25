@@ -12,6 +12,7 @@ extends Node
 #to create
 const EMOJI_POPUP = preload("res://TextBubble/emoji_popup.tscn")
 const EMOJI_BUTTON = preload("res://TextBubble/emoji_button.tscn")
+const ABILITY_DROPDOWN = preload("res://TextBubble/ability_dropdown.tscn")
 
 @export var sender = "Lizz"
 var message = "Hi, how are you doing?\nI've had a really rough week. Can we talk? It would mean a lot"
@@ -29,8 +30,10 @@ var char_displayed = 0
 var last_height = 0.0
 var parent_draggable: Draggable = null
 var emoji_popup:Control = null 
+var ability_dropdown:Control = null 
 
 var reaction_emoji = ""
+var can_use_ability = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,12 +44,18 @@ func _ready() -> void:
 	parent_draggable.end_hover.connect(_end_hover)
 
 func _begin_hover():
+	if can_use_ability :
+		ability_dropdown = ABILITY_DROPDOWN.instantiate()
+		ability_container.add_child(ability_dropdown)
+		
 	if self != null && reaction_emoji == "" :
 		emoji_popup = EMOJI_POPUP.instantiate()
 		emoji_popup.set_up(self)
 		ability_container.add_child(emoji_popup)
 	
 func _end_hover():
+	if ability_dropdown != null:
+		ability_container.remove_child(ability_dropdown)
 	if emoji_popup != null :
 		emoji_popup.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
 		ability_container.remove_child(emoji_popup)
