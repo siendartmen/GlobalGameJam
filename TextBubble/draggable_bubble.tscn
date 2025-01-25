@@ -7,6 +7,9 @@
 [node name="RigidBody2D" instance=ExtResource("1_kc0bw")]
 script = ExtResource("2_vav3l")
 
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-1.5, 4.5)
+
 [node name="Message_Bubble" parent="." index="2" instance=ExtResource("2_0u12m")]
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 8
