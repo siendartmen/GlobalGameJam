@@ -9,9 +9,6 @@
    id="svg1"
    sodipodi:docname="Graphic.svg"
    inkscape:version="1.4 (1:1.4+202410161351+e7c3feb100)"
-   inkscape:export-filename="GraphicExport.svg"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -35,7 +32,16 @@
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="105.83333"
+       height="52.916664"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
   <defs
      id="defs1">
     <linearGradient
@@ -117,6 +123,6 @@
     <path
        id="rect1-6"
        style="display:inline;fill:url(#linearGradient9);fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.67817;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:7.8;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 12.978536 0.88676758 C 7.1814801 0.88676758 2.5140584 5.5536725 2.5140584 11.350728 L 2.5140584 35.869128 C 2.5140584 41.666184 7.1814801 46.333089 12.978536 46.333089 L 49.368563 46.333089 L 50.25533 47.86943 L 52.916667 52.478451 L 55.578003 47.86943 L 56.464771 46.333089 L 92.854797 46.333089 C 98.651853 46.333089 103.31927 41.666184 103.31927 35.869128 L 103.31927 11.350728 C 103.31927 5.5536725 98.651853 0.88676758 92.854797 0.88676758 L 12.978536 0.88676758 z " />
+       d="m 12.978536,0.88676758 c -5.7970559,0 -10.4644776,4.66690492 -10.4644776,10.46396042 v 24.5184 c 0,5.797056 4.6674217,10.463961 10.4644776,10.463961 h 36.390027 l 0.886767,1.536341 2.661337,4.609021 2.661336,-4.609021 0.886768,-1.536341 h 36.390026 c 5.797056,0 10.464473,-4.666905 10.464473,-10.463961 v -24.5184 c 0,-5.7970555 -4.667417,-10.46396042 -10.464473,-10.46396042 z" />
   </g>
 </svg>
