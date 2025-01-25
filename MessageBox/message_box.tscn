@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://MessageBox/area_2d.gd" id="1_smnke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gj4a7"]
-size = Vector2(251, 646.5)
+size = Vector2(1607.69, 4561.54)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2sulc"]
 blend_mode = 1
@@ -17,7 +17,7 @@ position = Vector2(1140, 633)
 script = ExtResource("1_smnke")
 
 [node name="Message_Box_Area" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-110, -316)
+position = Vector2(-116.5, -304.5)
 scale = Vector2(0.13, 0.13)
 shape = SubResource("RectangleShape2D_gj4a7")
 debug_color = Color(0.474193, 0.464444, 0.936915, 0.42)

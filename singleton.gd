@@ -45,7 +45,7 @@ func phase_1() -> void:
 
 func spawn_draggable_bubble(message) -> void:
 	var new_draggable_bubble = DRAGGABLE_BUBBLE.instantiate()
-	new_draggable_bubble.global_position = Vector2.ZERO
+	new_draggable_bubble.global_position = Vector2(randf() * 100 - 50, randf() * 100 - 50)
 	main_node.add_child(new_draggable_bubble)
 	call_deferred("init_bubble",new_draggable_bubble,message)
 
@@ -56,4 +56,6 @@ func init_bubble(new_draggable_bubble, message: Message) -> void:
 
 
 func notify(txt: String, color: Color) -> void:
-	pass
+	main_node.notification.text = txt
+	main_node.notification.color_rect.color = color
+	main_node.notification_player.play("notify")
