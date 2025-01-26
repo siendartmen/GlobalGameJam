@@ -63,14 +63,14 @@ const SENDERS = [
 @export var original_source: String
 
 
-func _init(tim: String = "00:00", s: Senders = Senders.QUAIL, m: String = "Message here", cor: Emojis = Emojis.NONE, p: int = -1, tru: int = -1, con: int = -1, o: String = "Original source here") -> void:
+func _init(tim: String = "00:00", s: Senders = Senders.QUAIL, m: String = "Message here", cor: Emojis = Emojis.NONE, p: int = -1, tru: int = -1, con: float = 50, o: String = "Original source here") -> void:
 	time = tim
 	sender = s
 	message = m
 	correct_emoji = cor
 	points = p
 	truth = tru
-	confused = con
+	confused = con*100
 	original_source = o
 
 
