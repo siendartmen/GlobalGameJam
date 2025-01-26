@@ -29,10 +29,10 @@ texture = ExtResource("3_fud8l")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -125.0
-offset_top = -353.0
+offset_top = -282.0
 offset_right = 125.0
-offset_bottom = -324.0
-grow_horizontal = 2
+offset_bottom = -253.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Message Folder"
 horizontal_alignment = 1
 

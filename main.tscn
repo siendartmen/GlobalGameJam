@@ -47,11 +47,11 @@ _data = {
 script = ExtResource("1_4ygwd")
 
 [node name="Message Box7" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(2195, 324)
+position = Vector2(133, 1119)
 label_text = "June"
 
 [node name="Message Box6" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(1683, 324)
+position = Vector2(-379, 1119)
 label_text = "Lillian"
 
 [node name="Message Box5" parent="." instance=ExtResource("4_qm6br")]
@@ -59,19 +59,19 @@ position = Vector2(5422, 650)
 label_text = "Mason"
 
 [node name="Message Box4" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(1933, 328)
+position = Vector2(-129, 1119)
 label_text = "Cat"
 
 [node name="Message Box3" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(2456, 324)
+position = Vector2(383, 1119)
 label_text = "Ron"
 
 [node name="Message Box" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(1421, 328)
+position = Vector2(-629, 1119)
 label_text = "Quail"
 
 [node name="Message Box2" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(2711, 325)
+position = Vector2(630, 1119)
 label_text = "Mason"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

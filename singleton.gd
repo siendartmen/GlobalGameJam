@@ -73,7 +73,9 @@ func intro() -> void:
 		await get_tree().create_timer(randf()*2.5 + extra_time).timeout
 		
 		spawn_draggable_bubble(message,Vector2(randf() * 2000 - 1000, randf() * 1400 - 700))
-
+	
+	show_message("Put all the messages into the matching message boxes to progess to the next phase",25)
+	
 
 func phase_1() -> void:
 	var phase_1 = Phase1.new()
