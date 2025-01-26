@@ -35,6 +35,18 @@ theme_override_font_sizes/font_size = 25
 text = "About"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_mfjbs")
+theme_override_font_sizes/font_size = 20
+text = "Use the scroll wheel to zoom in and out of the messages, and click on empty spaces to move around the chat. Want 
+to organize the chaos? Click and drag messages to sort and connect the clues. Can you uncover the truth, or will the 
+scandal stay shrouded in mystery?
+
+Something has happened to X... but what? Rumors are flying, and everyone in the group chat has a different story to
+tell. (Game Title) puts you in the middle of the chaos, challenging you to piece together the truth about what happened 
+to your friend."
+
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
