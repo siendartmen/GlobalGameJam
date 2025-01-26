@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bsvwhvoeqk0we"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 203.0
+offset_top = -15.0
+offset_right = -185.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Respond" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Respond to X"
+
+[node name="Ignore" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Ghost them LMAOOAOAOA"
