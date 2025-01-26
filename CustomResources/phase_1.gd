@@ -4,7 +4,7 @@ extends Phase
 func _init() -> void:
 	messages.append(Message.new("11:00am ", Message.Senders.QUAIL, "Hey, have you heard from Ron? ", Message.Emojis.NONE, 0, -1, 0.7, "Quail"))
 	messages.append(Message.new("11:01am ", Message.Senders.QUAIL, "Just trying to work out went down... ", Message.Emojis.NONE, 0, 1, 0.7, "Quail"))
-	messages.append(Message.new("11:30 am", Message.Senders.JUNE, "Heyy, It's June from Uni! We take SWEN272 together!", Message.Emojis.NONE, 0, 1, 0.7, "June"))
+	messages.append(Message.new("11:30 am", Message.Senders.JUNE, "Heyy, It's June from Uni! We take SWEN272 together!", Message.Emojis.CRY, -1, 1, 0.7, "June"))
 	messages.append(Message.new("1:02 pm", Message.Senders.RON, "I'm fine, I had a great time last night!", Message.Emojis.THUMBS_UP, 1, 0.9, 0.7, "Ron"))
 	messages.append(Message.new("1:03 pm", Message.Senders.RON, "I was in the middle of preforming Let It Be. I didn't even know the fight was happening", Message.Emojis.CRY, 1, 0.95, 0.7, "Ron"))
 	messages.append(Message.new("1:04 pm", Message.Senders.RON, "It's kinda wild, Nick just... lost it.", Message.Emojis.SHOCKED, 1, 0.6, 0.7, "Ron"))

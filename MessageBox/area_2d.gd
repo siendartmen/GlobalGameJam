@@ -23,7 +23,7 @@ func _ready() -> void:
 
 # Triggered when a bubble enters the message box
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if shrinking == null and !bubbles_list.has(body) and Singleton.is_dragging_bubble:
+	if shrinking == null and !bubbles_list.has(body) and body.is_dragging:
 		var data = body.message_bubble.texture_rect.data
 		
 		if data.Sender_Names[data.sender] == categ_name :

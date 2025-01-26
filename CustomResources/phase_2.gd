@@ -4,7 +4,7 @@ extends Phase
 func _init() -> void:
 	messages.append(Message.new("5:01 pm ", Message.Senders.JUNE, "Woah, I heard from your friend Quail something crazy went down at the Karaoke bar, here to talk if you need!", Message.Emojis.NONE, 0, 0.1, 0, "June"))
 	messages.append(Message.new("5:04 pm", Message.Senders.LILLIAN , "shouldn't someone just go see him? surely they let people speak to them ", Message.Emojis.THUMBS_UP , 2, 1, 0, "Lilian "))
-	messages.append(Message.new("5:09 pm ", Message.Senders.JUNE, "I hope this is the right number ahaha, ", Message.Emojis.NONE, 0, 0.5, 0, "June"))
+	messages.append(Message.new("5:09 pm ", Message.Senders.JUNE, "I hope this is the right number ahaha, ", Message.Emojis.ANGRY, -1, 0.5, 0, "June"))
 	messages.append(Message.new("6:32 pm", Message.Senders.QUAIL, "i talked to Sybil, Micheal's girlfriend who works at the Karaoke bar- she said she'd never served the other person before ", Message.Emojis.NONE, 0, 1, 0, "Sybil; bartender at the karaoke bar."))
 	messages.append(Message.new("6:33 pm ", Message.Senders.QUAIL, "she said they seemed nice enough, slightly awkward when ordering but nothing that odd", Message.Emojis.THUMBS_UP , 1, 1, 0, "Sybil, Bartender"))
 	messages.append(Message.new("7:03 pm ", Message.Senders.RON, "Kev said he saw the other person order a drink, then approach Nick", Message.Emojis.NONE, 0, 1, 0, "Kev; a friend of Ron's who was at the karaoke bar."))

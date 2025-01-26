@@ -54,10 +54,6 @@ label_text = "June"
 position = Vector2(-379, 1119)
 label_text = "Lillian"
 
-[node name="Message Box5" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(5422, 650)
-label_text = "Mason"
-
 [node name="Message Box4" parent="." instance=ExtResource("4_qm6br")]
 position = Vector2(-129, 1119)
 label_text = "Cat"
