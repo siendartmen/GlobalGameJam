@@ -26,7 +26,7 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 	if shrinking == null and !bubbles_list.has(body) and body.is_dragging:
 		var data = body.message_bubble.texture_rect.data
 		
-		if data.Sender_Names[data.sender] == categ_name :
+		if data.Sender_Names[data.sender] == categ_name or categ_name == "Important" :
 			print("Bubble entered:", body.name)
 			shrinking = body
 			call_deferred("deffer")
