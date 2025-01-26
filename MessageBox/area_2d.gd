@@ -28,6 +28,7 @@ func add_bubble_to_list(body: Node2D) -> void:
 	print("adding bubble", bubbles_list)
 	bubbles_list.append(body)
 	body.in_box = true
+	Singleton.put_into_box()
 	call_deferred("freeze_bubble", body)
 	
 	# Move and shrink the bubble

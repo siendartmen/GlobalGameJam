@@ -85,3 +85,6 @@ func notify(txt: String, color: Color) -> void:
 	main_node.notification.text = txt
 	main_node.notification.color_rect.color = color
 	main_node.notification_player.play("notify")
+
+func put_into_box():
+	pass
