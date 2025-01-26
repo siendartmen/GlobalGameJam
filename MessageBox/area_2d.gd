@@ -5,7 +5,7 @@ signal added_bubble_to_list
 
 @onready var message_box_area: CollisionShape2D = $Message_Box_Area
 
-const MAX_BUBBLES = 5        # Maximum visible messages in the chat box
+const MAX_BUBBLES = 500        # Maximum visible messages in the chat box
 const SHRINK_DURATION = 0.3  # Duration for shrinking effect
 const SCROLL_DURATION = 0.5  # Duration for scrolling effect
 const BUBBLE_SPACING = 10    # Spacing between bubbles
