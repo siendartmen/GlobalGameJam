@@ -10,7 +10,7 @@ const Phase4 = preload("res://CustomResources/phase_4.gd")
 const Final = preload("res://CustomResources/final.gd")
 
 ##GAME STATS
-var ability_points = 4
+var ability_points = 8
 
 func use_ability(text_bubble:TextBubble,type) :
 	var t = type.new()
@@ -74,6 +74,7 @@ func phase_1() -> void:
 	var phase_1 = Phase1.new()
 	amountNeeded += phase_1.messages.size()
 	for message in phase_1.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
@@ -81,6 +82,7 @@ func phase_2() -> void:
 	var phase_2 = Phase2.new()
 	amountNeeded += phase_2.messages.size()
 	for message in phase_2.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
@@ -88,6 +90,7 @@ func phase_3() -> void:
 	var phase_3 = Phase3.new()
 	amountNeeded += phase_3.messages.size()
 	for message in phase_3.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
@@ -95,6 +98,7 @@ func phase_4() -> void:
 	var phase_4 = Phase4.new()
 	amountNeeded += phase_4.messages.size()
 	for message in phase_4.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
@@ -102,6 +106,7 @@ func final() -> void:
 	var final = Final.new()
 	amountNeeded += final.messages.size()
 	for message in final.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
