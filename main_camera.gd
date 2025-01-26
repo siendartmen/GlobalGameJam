@@ -13,7 +13,7 @@ func _enter_tree() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		print(Singleton.is_dragging_bubble)
+		
 		if event.button_mask == MOUSE_BUTTON_MASK_LEFT and not Singleton.is_dragging_bubble:
 			global_position -= event.relative / zoom_level
 			camera_offset -= event.relative / zoom_level

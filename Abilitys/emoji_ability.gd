@@ -3,7 +3,6 @@ extends BaseAbility
 
 const Message = preload("res://CustomResources/message.gd")
 
-static var emoji_type = Message.Emojis.NONE 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
@@ -15,7 +14,8 @@ func _process(delta: float) -> void:
 
 func use_ability(text_bubble:TextBubble) :
 	super(text_bubble)
-	if bubble.data.correct_emoji == emoji_type :
+	print(str(bubble.data.correct_emoji) + ", " + str(get_emoji_type()))
+	if bubble.data.correct_emoji == get_emoji_type() :
 		Singleton.ability_points += bubble.data.points
 		if bubble.data.points > 0 :
 			Singleton.notify("Gained " + str(bubble.data.points) + " points from your reaction", Color(1,1,1))
@@ -25,3 +25,6 @@ func use_ability(text_bubble:TextBubble) :
 	
 func get_points() -> int :
 	return 0
+	
+func get_emoji_type() -> Message.Emojis :
+	return Message.Emojis.NONE 

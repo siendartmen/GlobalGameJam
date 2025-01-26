@@ -20,5 +20,5 @@ func do_anim_drag(delta: float):
 			start_drag_time = clampf(start_drag_time - delta/anim_speed,0,1)
 			
 		var size1 = start_drag_time*0.2 + 1
-		print(size1)
+		
 		message_bubble.scale = Vector2(size1,size1)

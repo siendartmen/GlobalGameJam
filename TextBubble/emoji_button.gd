@@ -5,7 +5,13 @@ const Message = preload("res://CustomResources/message.gd")
 
 @export var emoji_type = Message.Emojis.ANGRY
 @export var emoji_icon = preload("res://Images/CryFaceEmoji.png")
-const EmojiAbility = preload("res://Abilitys/emoji_ability.gd")
+
+var emoji_classes = [
+	preload("res://Abilitys/shocked_emoji.gd"),
+	preload("res://Abilitys/angry_emoji.gd"),
+	preload("res://Abilitys/thumbs_up_emoji.gd"),
+	preload("res://Abilitys/cry_emoji.gd")
+]
 
 var text_bubble:TextBubble = null
 var hovered = false
@@ -21,7 +27,7 @@ func _process(delta: float) -> void:
 func _on_button_button_down() -> void:
 	if text_bubble != null :
 		text_bubble.add_emoji(emoji_type,emoji_icon)
-		Singleton.use_ability(text_bubble,EmojiAbility)
+		Singleton.use_ability(text_bubble,emoji_classes[emoji_type-1])
 
 func _on_button_mouse_entered() -> void:
 	hovered = true

@@ -19,6 +19,7 @@ script = ExtResource("1_lppg1")
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
+emoji_type = 3
 emoji_icon = ExtResource("3_ma7i0")
 
 [node name="Cry" parent="." instance=ExtResource("1_mouft")]
@@ -31,7 +32,7 @@ emoji_icon = ExtResource("4_e508x")
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
-emoji_type = 3
+emoji_type = 4
 emoji_icon = ExtResource("5_mn7wv")
 
 [node name="Shocked" parent="." instance=ExtResource("1_mouft")]
