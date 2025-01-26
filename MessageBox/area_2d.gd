@@ -31,9 +31,9 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 # Add bubble to the list, shrink it, and freeze it
 func add_bubble_to_list(body: Node2D) -> void:
 	print("adding bubble", bubbles_list)
-	added_bubble_to_list.emit()
 	bubbles_list.append(body)
 	body.in_box = true
+	added_bubble_to_list.emit()
 	Singleton.put_into_box()
 	call_deferred("freeze_bubble", body)
 	
@@ -88,7 +88,7 @@ func move_bubble_to_position(bubble: Node2D, target_pos: Vector2) -> void:
 
 # Calculate the target position for a bubble based on its index
 func calculate_target_position(index: int) -> Vector2:
-	var base_y = message_box_area.shape.size.y * -0.5 * message_box_area.scale.y  # Starting Y position for the first bubble
+	var base_y = 50 + message_box_area.shape.size.y * -0.5 * message_box_area.scale.y  # Starting Y position for the first bubble
 	var y_offset = base_y + index * (BUBBLE_SPACING + get_bubble_height(index))
 
 	# Ensure bubbles are stacked vertically in the box
