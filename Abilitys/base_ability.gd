@@ -14,7 +14,8 @@ func _process(delta: float) -> void:
 	pass
 
 func use_ability(text_bubble:TextBubble) :
-	Singleton.notify("used " + display_name, Color(1, 1, 1))
+	if !display_name.is_empty() :
+		Singleton.notify("used " + display_name, Color(1, 1, 1))
 	bubble = text_bubble
 
 func get_points() -> int :

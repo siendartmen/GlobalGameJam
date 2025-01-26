@@ -18,6 +18,14 @@ var Sender_Colors = [
 	Color(0.7,1,0.2),
 	Color(0.2,1,0.95)
 ]
+var Sender_Names = [
+	"Quail",
+	"Lillian",
+	"June",
+	"Ron",
+	"Mason",
+	"Cat"
+]
 #Color("#c3d3c7"),
 #	Color("#decee3"),
 #	Color("#f7d7ae"),
