@@ -131,7 +131,6 @@ func added_bubble_to_list() -> void:
 		if not bubble.in_box:
 			found_non_listed_bubble = false
 	
-	print("NONLISTED BUBBLE" + str(found_non_listed_bubble))
 	
 	if found_non_listed_bubble:
 		current_phase += 1

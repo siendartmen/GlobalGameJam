@@ -47,15 +47,15 @@ _data = {
 script = ExtResource("1_4ygwd")
 
 [node name="Message Box4" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(1032, 1059)
+position = Vector2(1933, 328)
 label_text = "Cat"
 
 [node name="Message Box3" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(-1421, 1027)
+position = Vector2(-1933, 323)
 label_text = "Ron"
 
 [node name="Message Box" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(1028, 328)
+position = Vector2(1421, 328)
 label_text = "Quail"
 
 [node name="Message Box2" parent="." instance=ExtResource("4_qm6br")]
@@ -83,7 +83,6 @@ libraries = {
 }
 
 [node name="Camera2D" parent="." instance=ExtResource("2_8wjr4")]
-position = Vector2(575, 324)
 
 [node name="FOLDER" type="Node2D" parent="."]
 position = Vector2(-46, 57)
