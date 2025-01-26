@@ -51,27 +51,27 @@ position = Vector2(1045, 1124)
 label_text = "Important"
 
 [node name="Message Box7" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(133, 1119)
+position = Vector2(130, 1119)
 label_text = "June"
 
 [node name="Message Box6" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(-379, 1119)
+position = Vector2(-389, 1119)
 label_text = "Lillian"
 
 [node name="Message Box4" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(-129, 1119)
+position = Vector2(-130, 1119)
 label_text = "Cat"
 
 [node name="Message Box3" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(383, 1119)
+position = Vector2(389, 1119)
 label_text = "Ron"
 
 [node name="Message Box" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(-629, 1119)
+position = Vector2(-650, 1119)
 label_text = "Quail"
 
 [node name="Message Box2" parent="." instance=ExtResource("4_qm6br")]
-position = Vector2(630, 1119)
+position = Vector2(648, 1119)
 label_text = "Mason"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
