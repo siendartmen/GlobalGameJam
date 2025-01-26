@@ -27,7 +27,7 @@ offset_bottom = 93.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 12
 text = "Click drag Message Bubbles
-Click drag background to mvoe camera
+Click drag background to move camera
 MMB scroll to zoom in/out"
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_r4gbm")]
