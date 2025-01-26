@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8aqyhkcva3eb"]
+[gd_scene load_steps=6 format=3 uid="uid://c8aqyhkcva3eb"]
 
 [ext_resource type="Script" path="res://MessageBox/area_2d.gd" id="1_smnke"]
+[ext_resource type="Script" path="res://MessageBox/message_box_initalization.gd" id="1_uqslh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gj4a7"]
 size = Vector2(1607.69, 4561.54)
@@ -11,6 +12,7 @@ blend_mode = 1
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vigpb"]
 
 [node name="Message Box" type="Node2D"]
+script = ExtResource("1_uqslh")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_smnke")
@@ -27,7 +29,6 @@ scale = Vector2(252.603, -643.897)
 texture = SubResource("PlaceholderTexture2D_vigpb")
 
 [node name="Label" type="Label" parent="."]
-anchors_preset = -1
 offset_left = -125.0
 offset_top = -353.0
 offset_right = 125.0

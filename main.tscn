@@ -46,8 +46,21 @@ _data = {
 [node name="Main" type="Node2D"]
 script = ExtResource("1_4ygwd")
 
+[node name="Message Box4" parent="." instance=ExtResource("4_qm6br")]
+position = Vector2(1032, 1059)
+label_text = "Cat"
+
+[node name="Message Box3" parent="." instance=ExtResource("4_qm6br")]
+position = Vector2(-1421, 1027)
+label_text = "Ron"
+
 [node name="Message Box" parent="." instance=ExtResource("4_qm6br")]
 position = Vector2(1028, 328)
+label_text = "Quail"
+
+[node name="Message Box2" parent="." instance=ExtResource("4_qm6br")]
+position = Vector2(-1421, 323)
+label_text = "Mason"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

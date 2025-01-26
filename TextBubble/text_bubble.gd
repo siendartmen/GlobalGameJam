@@ -46,6 +46,12 @@ func _ready() -> void:
 	parent_draggable.begin_hover.connect(_begin_hover)
 	parent_draggable.end_hover.connect(_end_hover)
 
+func set_color():
+	#set color
+	var color = data.Sender_Colors[data.sender]
+	texture_rect.self_modulate = color
+	texture_rect_2.self_modulate = color
+
 func _begin_hover():
 	if reaction_emoji == MessageClass.Emojis.NONE and emoji_popup == null:
 		emoji_popup = EMOJI_POPUP.instantiate()

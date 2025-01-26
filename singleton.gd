@@ -78,6 +78,7 @@ func spawn_draggable_bubble(message, position: Vector2) -> void:
 func init_bubble(new_draggable_bubble, message: Message) -> void:
 	var bubble = new_draggable_bubble.message_bubble.texture_rect;
 	bubble.data = message
+	bubble.set_color()
 
 
 func notify(txt: String, color: Color) -> void:

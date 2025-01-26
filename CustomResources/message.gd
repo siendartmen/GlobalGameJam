@@ -10,6 +10,20 @@ enum Senders {
 	MASON,
 	CAT
 }
+var Sender_Colors = [
+	Color(0.9,1,0.35),
+	Color(0.65,0.95,0.95),
+	Color(0.3,0.8,1),
+	Color(1,0,0.95),
+	Color(0.7,1,0.2),
+	Color(0.2,1,0.95)
+]
+#Color("#c3d3c7"),
+#	Color("#decee3"),
+#	Color("#f7d7ae"),
+#	Color("#e6a996"),
+#	Color("#cfe1e3"),
+#	Color(0.9,1,0.95)
 enum Emojis {
 	NONE,
 	SHOCKED,
