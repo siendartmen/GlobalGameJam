@@ -35,6 +35,8 @@ var zoom_to = -1
 
 var current_phase = 0
 
+var rantime = 5
+var mult = 5
 
 func _ready() -> void:
 	intro()
@@ -74,14 +76,14 @@ func intro() -> void:
 		
 		spawn_draggable_bubble(message,Vector2(randf() * 2000 - 1000, randf() * 1400 - 700))
 	
-	show_message("Put all the messages into the matching message boxes to progess to the next phase",25)
+	show_message("Put all the messages into the matching message boxes to proceed",25)
 	
 
 func phase_1() -> void:
 	var phase_1 = Phase1.new()
 	amountNeeded += phase_1.messages.size()
 	for message in phase_1.messages:
-		await get_tree().create_timer(randf()*2.5).timeout
+		await get_tree().create_timer(randf()*mult+rantime).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
@@ -89,7 +91,7 @@ func phase_2() -> void:
 	var phase_2 = Phase2.new()
 	amountNeeded += phase_2.messages.size()
 	for message in phase_2.messages:
-		await get_tree().create_timer(randf()*2.5).timeout
+		await get_tree().create_timer(randf()*mult+rantime).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
@@ -97,7 +99,7 @@ func phase_3() -> void:
 	var phase_3 = Phase3.new()
 	amountNeeded += phase_3.messages.size()
 	for message in phase_3.messages:
-		await get_tree().create_timer(randf()*2.5).timeout
+		await get_tree().create_timer(randf()*mult+rantime).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
@@ -105,7 +107,7 @@ func phase_4() -> void:
 	var phase_4 = Phase4.new()
 	amountNeeded += phase_4.messages.size()
 	for message in phase_4.messages:
-		await get_tree().create_timer(randf()*2.5).timeout
+		await get_tree().create_timer(randf()*mult+rantime).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
@@ -113,7 +115,7 @@ func final() -> void:
 	var final = Final.new()
 	amountNeeded += final.messages.size()
 	for message in final.messages:
-		await get_tree().create_timer(randf()*2.5).timeout
+		await get_tree().create_timer(randf()*mult+rantime).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 

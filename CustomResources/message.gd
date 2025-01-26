@@ -17,7 +17,8 @@ var Sender_Colors = [
 	Color(0.3,0.8,1),
 	Color(1,0,0.95),
 	Color(0.7,1,0.2),
-	Color(0.2,1,0.95)
+	Color(0.2,1,0.95),
+	Color(.2,.2,1)
 ]
 var Sender_Names = [
 	"Quail",
