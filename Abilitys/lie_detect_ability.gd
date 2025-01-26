@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	if myWidget != null :
 		set_text_chars((myWidget.time_for_trace-myWidget.current_time)/myWidget.time_for_trace*desire.length())
 		if myWidget.current_time <= 0 :
-			var lie_chance = str(bubble.data.truth)
+			var lie_chance = str(100 - bubble.data.truth)
 			if bubble.data.truth < 0 : lie_chance = "Inapplicable situation"
 			myWidget.label.text = "Lie Detection Complete: [duration " + str(myWidget.time_for_trace) + " seconds]"\
 			+ "\n\nLie Chance: " + lie_chance + "%"
