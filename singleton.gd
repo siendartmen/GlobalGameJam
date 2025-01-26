@@ -152,6 +152,7 @@ func added_bubble_to_list() -> void:
 			
 	if amount_in_box >= amountNeeded :
 		current_phase += 1
+		ability_points += 6
 		match current_phase:
 			0: intro()
 			1: phase_1()
