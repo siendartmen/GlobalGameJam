@@ -55,9 +55,14 @@ func intro() -> void:
 	amountNeeded += intro.messages.size()
 	# first message
 	spawn_draggable_bubble(intro.messages[0],Vector2(0,0))
-	await get_tree().create_timer(6).timeout
+	await get_tree().create_timer(3).timeout
+	show_message("Choosing an appropriate emoji reaction can gain you ability points",6)
+	await get_tree().create_timer(3).timeout
 	zoom_to = 0.3
-	await get_tree().create_timer(8).timeout
+	await get_tree().create_timer(3).timeout
+	show_message("You can click on message bubbles to drag them",6)
+	await get_tree().create_timer(5).timeout
+	show_message("Scroll MMB to zoom in/out\nclick on the background and drag to move around the camera",20)
 	
 	for i in range(intro.messages.size()):
 		if i == 0 : continue
