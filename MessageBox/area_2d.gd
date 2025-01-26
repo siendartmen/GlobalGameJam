@@ -1,9 +1,9 @@
 extends Area2D
 
+
+signal added_bubble_to_list
+
 @onready var message_box_area: CollisionShape2D = $Message_Box_Area
-
-
-
 
 const MAX_BUBBLES = 5        # Maximum visible messages in the chat box
 const SHRINK_DURATION = 0.3  # Duration for shrinking effect
@@ -15,19 +15,28 @@ var bubbles_list: Array = [] # List to store active bubbles
 var tween: Tween             # Tween node for smooth animations
 
 var shrinking:Node2D = null
+var categ_name = "Quail"
+
+func _ready() -> void:
+	added_bubble_to_list.connect(Singleton.added_bubble_to_list)
+
 
 # Triggered when a bubble enters the message box
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if shrinking == null and !bubbles_list.has(body) and Singleton.is_dragging_bubble:
-		print("Bubble entered:", body.name)
-		shrinking = body
-		add_bubble_to_list(shrinking)
+		var data = body.message_bubble.texture_rect.data
+		
+		if data.Sender_Names[data.sender] == categ_name :
+			print("Bubble entered:", body.name)
+			shrinking = body
+			add_bubble_to_list(shrinking)
 
 # Add bubble to the list, shrink it, and freeze it
 func add_bubble_to_list(body: Node2D) -> void:
 	print("adding bubble", bubbles_list)
 	bubbles_list.append(body)
 	body.in_box = true
+	added_bubble_to_list.emit()
 	Singleton.put_into_box()
 	call_deferred("freeze_bubble", body)
 	
@@ -82,7 +91,7 @@ func move_bubble_to_position(bubble: Node2D, target_pos: Vector2) -> void:
 
 # Calculate the target position for a bubble based on its index
 func calculate_target_position(index: int) -> Vector2:
-	var base_y = message_box_area.shape.size.y * -0.5 * message_box_area.scale.y  # Starting Y position for the first bubble
+	var base_y = 50 + message_box_area.shape.size.y * -0.5 * message_box_area.scale.y  # Starting Y position for the first bubble
 	var y_offset = base_y + index * (BUBBLE_SPACING + get_bubble_height(index))
 
 	# Ensure bubbles are stacked vertically in the box

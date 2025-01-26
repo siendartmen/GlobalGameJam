@@ -7,3 +7,4 @@ extends Node2D
 
 func _ready() -> void:
 	label.text = label_text
+	area_2d.categ_name = label_text
