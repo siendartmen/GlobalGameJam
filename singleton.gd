@@ -4,6 +4,10 @@ extends Node
 const DRAGGABLE_BUBBLE = preload("res://TextBubble/draggable_bubble.tscn")
 const Intro = preload("res://CustomResources/intro.gd")
 const Phase1 = preload("res://CustomResources/phase_1.gd")
+const Phase2 = preload("res://CustomResources/phase_2.gd")
+const Phase3 = preload("res://CustomResources/phase_3.gd")
+const Phase4 = preload("res://CustomResources/phase_4.gd")
+const Final = preload("res://CustomResources/final.gd")
 
 ##GAME STATS
 var ability_points = 4
@@ -25,8 +29,11 @@ var main_node: MainNode
 var canvas_layer: CanvasLayer
 
 var is_dragging_bubble := false
+var all_draggable_bubbles: Array = []
 
 var zoom_to = -1
+
+var current_phase = 0
 
 
 func _ready() -> void:
@@ -68,10 +75,35 @@ func phase_1() -> void:
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
+func phase_2() -> void:
+	var phase_2 = Phase2.new()
+	for message in phase_2.messages:
+		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
+
+
+func phase_3() -> void:
+	var phase_3 = Phase3.new()
+	for message in phase_3.messages:
+		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
+
+
+func phase_4() -> void:
+	var phase_4 = Phase4.new()
+	for message in phase_4.messages:
+		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
+
+
+func final() -> void:
+	var final = Final.new()
+	for message in final.messages:
+		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
+
+
 func spawn_draggable_bubble(message, position: Vector2) -> void:
 	var new_draggable_bubble = DRAGGABLE_BUBBLE.instantiate()
 	new_draggable_bubble.global_position = position
 	main_node.add_child(new_draggable_bubble)
+	all_draggable_bubbles.append(new_draggable_bubble)
 	call_deferred("init_bubble",new_draggable_bubble,message)
 
 
@@ -88,3 +120,25 @@ func notify(txt: String, color: Color) -> void:
 
 func put_into_box():
 	pass
+
+func show_message(message:String,time:float):
+	main_node.canvas_layer_2.show_message(message,time)
+
+
+func added_bubble_to_list() -> void:
+	var found_non_listed_bubble = true
+	for bubble in all_draggable_bubbles:
+		if not bubble.in_box:
+			found_non_listed_bubble = false
+	
+	print("NONLISTED BUBBLE" + str(found_non_listed_bubble))
+	
+	if found_non_listed_bubble:
+		current_phase += 1
+		match current_phase:
+			0: intro()
+			1: phase_1()
+			2: phase_2()
+			3: phase_3()
+			4: phase_4()
+			5: final()

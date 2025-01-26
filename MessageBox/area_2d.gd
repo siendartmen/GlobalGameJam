@@ -1,9 +1,9 @@
 extends Area2D
 
+
+signal added_bubble_to_list
+
 @onready var message_box_area: CollisionShape2D = $Message_Box_Area
-
-
-
 
 const MAX_BUBBLES = 5        # Maximum visible messages in the chat box
 const SHRINK_DURATION = 0.3  # Duration for shrinking effect
@@ -16,6 +16,11 @@ var tween: Tween             # Tween node for smooth animations
 
 var shrinking:Node2D = null
 
+
+func _ready() -> void:
+	added_bubble_to_list.connect(Singleton.added_bubble_to_list)
+
+
 # Triggered when a bubble enters the message box
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if shrinking == null and !bubbles_list.has(body) and Singleton.is_dragging_bubble:
@@ -26,6 +31,7 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 # Add bubble to the list, shrink it, and freeze it
 func add_bubble_to_list(body: Node2D) -> void:
 	print("adding bubble", bubbles_list)
+	added_bubble_to_list.emit()
 	bubbles_list.append(body)
 	body.in_box = true
 	Singleton.put_into_box()
