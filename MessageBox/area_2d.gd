@@ -15,7 +15,7 @@ var bubbles_list: Array = [] # List to store active bubbles
 var tween: Tween             # Tween node for smooth animations
 
 var shrinking:Node2D = null
-
+var categ_name = "Quail"
 
 func _ready() -> void:
 	added_bubble_to_list.connect(Singleton.added_bubble_to_list)
@@ -24,9 +24,12 @@ func _ready() -> void:
 # Triggered when a bubble enters the message box
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if shrinking == null and !bubbles_list.has(body) and Singleton.is_dragging_bubble:
-		print("Bubble entered:", body.name)
-		shrinking = body
-		add_bubble_to_list(shrinking)
+		var data = body.message_bubble.texture_rect.data
+		
+		if data.Sender_Names[data.sender] == categ_name :
+			print("Bubble entered:", body.name)
+			shrinking = body
+			add_bubble_to_list(shrinking)
 
 # Add bubble to the list, shrink it, and freeze it
 func add_bubble_to_list(body: Node2D) -> void:

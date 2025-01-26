@@ -24,7 +24,7 @@ debug_color = Color(0.474193, 0.464444, 0.936915, 0.42)
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 material = SubResource("CanvasItemMaterial_2sulc")
 rotation = 3.14159
-scale = Vector2(-0.62613, 0.709323)
+scale = Vector2(0.626, -0.709)
 texture = ExtResource("3_fud8l")
 
 [node name="Label" type="Label" parent="."]
