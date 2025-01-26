@@ -15,10 +15,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var size = clampf(time_for_trace-current_time,0,anim_time)/anim_time
+	var size = 0.01 + clampf(time_for_trace-current_time,0,anim_time)/anim_time
 	scale = Vector2(size,size)
 	
-	if size <= 0 and direction == -1 :
+	if size <= 0.02 and direction == -1 :
 		Singleton.canvas_layer.remove_child(self)
 	
 	current_time = clampf(current_time - delta * direction,0,time_for_trace)
