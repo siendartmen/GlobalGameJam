@@ -6,8 +6,7 @@ var Abilitys = [
 	preload("res://Abilitys/base_ability.gd"),
 	preload("res://Abilitys/trace_ability.gd"),
 	preload("res://Abilitys/lie_detect_ability.gd"),
-	preload("res://Abilitys/trace_ability.gd"),
-	preload("res://Abilitys/trace_ability.gd")
+	preload("res://Abilitys/affinity_ability.gd")
 ]
 
 var hovered = false
@@ -28,7 +27,6 @@ func _ready() -> void:
 		option_button.set_item_disabled(1,true)
 	if text_bubble.data.truth <= 0 :
 		option_button.set_item_disabled(2,true)
-	option_button.set_item_disabled(3,true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
