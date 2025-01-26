@@ -8,7 +8,7 @@ signal added_bubble_to_list
 const MAX_BUBBLES = 500        # Maximum visible messages in the chat box
 const SHRINK_DURATION = 0.3  # Duration for shrinking effect
 const SCROLL_DURATION = 0.5  # Duration for scrolling effect
-const BUBBLE_SPACING = 10    # Spacing between bubbles
+const BUBBLE_SPACING = 25    # Spacing between bubbles
 const INTERACTION_LAYER = 2  # Layer for interactable bubbles inside the box
 
 var bubbles_list: Array = [] # List to store active bubbles

@@ -35,8 +35,8 @@ var zoom_to = -1
 
 var current_phase = 0
 
-var rantime = 5
-var mult = 5
+var rantime = 1
+var mult = 9
 
 func _ready() -> void:
 	intro()
