@@ -29,8 +29,9 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 		if data.Sender_Names[data.sender] == categ_name :
 			print("Bubble entered:", body.name)
 			shrinking = body
-			add_bubble_to_list(shrinking)
-
+			call_deferred("deffer")
+func deffer():
+	add_bubble_to_list(shrinking)
 # Add bubble to the list, shrink it, and freeze it
 func add_bubble_to_list(body: Node2D) -> void:
 	print("adding bubble", bubbles_list)

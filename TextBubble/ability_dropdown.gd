@@ -20,14 +20,15 @@ func _ready() -> void:
 		if i == 0 : continue
 		var points = Abilitys[i].new().get_points()
 		option_button.set_item_text(i, option_button.get_item_text(i) + " [ " + str(Singleton.ability_points) + "/" + str(points) + "]")
+	call_deferred("def")
 	
+func def():
 	var name = text_bubble.data.Sender_Names[text_bubble.data.sender]
 	var source = text_bubble.data.original_source
 	if name == source :
 		option_button.set_item_disabled(1,true)
 	if text_bubble.data.truth <= 0 :
 		option_button.set_item_disabled(2,true)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

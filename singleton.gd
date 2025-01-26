@@ -10,7 +10,7 @@ const Phase4 = preload("res://CustomResources/phase_4.gd")
 const Final = preload("res://CustomResources/final.gd")
 
 ##GAME STATS
-var ability_points = 4
+var ability_points = 8
 
 func use_ability(text_bubble:TextBubble,type) :
 	var t = type.new()
@@ -49,14 +49,20 @@ func _process(delta: float) -> void:
 		main_camera._update_view()
 		if abs(main_camera.zoom_level - zoom_to) < 0.05 : zoom_to = -1
 
-
+var amountNeeded = 0
 func intro() -> void:
 	var intro = Intro.new()
+	amountNeeded += intro.messages.size()
 	# first message
 	spawn_draggable_bubble(intro.messages[0],Vector2(0,0))
-	await get_tree().create_timer(6).timeout
+	await get_tree().create_timer(3).timeout
+	show_message("Choosing an appropriate emoji reaction can gain you ability points",6)
+	await get_tree().create_timer(3).timeout
 	zoom_to = 0.3
-	await get_tree().create_timer(8).timeout
+	await get_tree().create_timer(3).timeout
+	show_message("You can click on message bubbles to drag them",6)
+	await get_tree().create_timer(5).timeout
+	show_message("Scroll MMB to zoom in/out\nclick on the background and drag to move around the camera",20)
 	
 	for i in range(intro.messages.size()):
 		if i == 0 : continue
@@ -71,31 +77,41 @@ func intro() -> void:
 
 func phase_1() -> void:
 	var phase_1 = Phase1.new()
+	amountNeeded += phase_1.messages.size()
 	for message in phase_1.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
 func phase_2() -> void:
 	var phase_2 = Phase2.new()
+	amountNeeded += phase_2.messages.size()
 	for message in phase_2.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
 func phase_3() -> void:
 	var phase_3 = Phase3.new()
+	amountNeeded += phase_3.messages.size()
 	for message in phase_3.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
 func phase_4() -> void:
 	var phase_4 = Phase4.new()
+	amountNeeded += phase_4.messages.size()
 	for message in phase_4.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
 func final() -> void:
 	var final = Final.new()
+	amountNeeded += final.messages.size()
 	for message in final.messages:
+		await get_tree().create_timer(randf()*2.5).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
 
 
@@ -127,12 +143,12 @@ func show_message(message:String,time:float):
 
 func added_bubble_to_list() -> void:
 	var found_non_listed_bubble = true
+	var amount_in_box = 0
 	for bubble in all_draggable_bubbles:
-		if not bubble.in_box:
-			found_non_listed_bubble = false
-	
-	
-	if found_non_listed_bubble:
+		if bubble.in_box:
+			amount_in_box +=1
+			
+	if amount_in_box >= amountNeeded :
 		current_phase += 1
 		match current_phase:
 			0: intro()
