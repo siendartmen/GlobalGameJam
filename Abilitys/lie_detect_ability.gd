@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 			myWidget.label.text = "Lie Detection Complete: [duration " + str(myWidget.time_for_trace) + " seconds]"\
 			+ "\n\nLie Chance: " + lie_chance + "%"
 		
-		
+
 
 func use_ability(text_bubble:TextBubble) :
 	super(text_bubble)

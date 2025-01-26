@@ -16,11 +16,19 @@ func _process(delta: float) -> void:
 	if myWidget != null :
 		set_text_chars((myWidget.time_for_trace-myWidget.current_time)/myWidget.time_for_trace*desire.length())
 		if myWidget.current_time <= 0 :
-			var affinity = str(bubble.data.confused)
+			var affinity = bubble.data.confused
 			myWidget.label.text = "Social Scan Complete: [duration " + str(myWidget.time_for_trace) + " seconds]"\
-			+ "\n\nAffinity for Nick: " + affinity + "%"
+			+ "\n\nAffinity for Nick: " + percent_to_word(affinity)
 		
-		
+func percent_to_word(per:float) -> String :
+	if per > 98 : return "Loves Nick"
+	if per > 90 : return "Very Close"
+	if per > 75 : return "Friends"
+	if per > 60 : return "Acquaintances"
+	if per > 50 : return "Apathetic"
+	if per > 25 : return "Dislikes Nick"
+	if per > 10 : return "Hates Nick"
+	return "Absolutely Detests Nick"	
 
 func use_ability(text_bubble:TextBubble) :
 	super(text_bubble)
