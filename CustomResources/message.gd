@@ -8,7 +8,8 @@ enum Senders {
 	JUNE,
 	RON,
 	MASON,
-	CAT
+	CAT,
+	NICK
 }
 var Sender_Colors = [
 	Color(0.9,1,0.35),
@@ -24,7 +25,8 @@ var Sender_Names = [
 	"June",
 	"Ron",
 	"Mason",
-	"Cat"
+	"Cat",
+	"Nick"
 ]
 #Color("#c3d3c7"),
 #	Color("#decee3"),
