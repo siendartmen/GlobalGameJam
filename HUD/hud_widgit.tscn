@@ -8,16 +8,26 @@
 script = ExtResource("1_rpae1")
 
 [node name="Label" type="Label" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 46.0
-offset_top = -67.0
-offset_right = 198.0
-offset_bottom = -32.0
-grow_vertical = 0
+offset_left = 18.0
+offset_top = 28.0
+offset_right = 241.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 30
 text = "Ability Points: 4"
 script = ExtResource("1_djp7c")
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_top = 36.0
+offset_right = -6.0
+offset_bottom = 93.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "Click drag Message Bubbles
+Click drag background to mvoe camera
+MMB scroll to zoom in/out"
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_r4gbm")]
