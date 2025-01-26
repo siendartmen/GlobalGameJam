@@ -18,6 +18,8 @@ var child_focus = false
 
 var mouse_hovering = false
 
+var in_box = false
+
 signal begin_hover
 signal end_hover
 

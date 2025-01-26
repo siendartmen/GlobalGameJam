@@ -27,6 +27,8 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 func add_bubble_to_list(body: Node2D) -> void:
 	print("adding bubble", bubbles_list)
 	bubbles_list.append(body)
+	body.in_box = true
+	Singleton.put_into_box()
 	call_deferred("freeze_bubble", body)
 	
 	# Move and shrink the bubble

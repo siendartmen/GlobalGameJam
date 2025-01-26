@@ -23,9 +23,9 @@ item_count = 4
 popup/item_0/text = "Use Ability?"
 popup/item_1/text = "Trace"
 popup/item_1/id = 1
-popup/item_2/text = "Lie Detect"
+popup/item_2/text = "Lie Detection"
 popup/item_2/id = 2
-popup/item_3/text = "Phone Logs"
+popup/item_3/text = "Social Media Scan"
 popup/item_3/id = 3
 
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
