@@ -13,7 +13,8 @@ func _process(delta: float) -> void:
 const FINAL_BLACK_FADE = preload("res://Menu/final_black_Fade.tscn")
 func _on_respond_pressed() -> void:
 	Singleton.canvas_layer.add_child(FINAL_BLACK_FADE.instantiate())
-
+	Singleton.canvas_layer.remove_child(self)
 
 func _on_ignore_pressed() -> void:
 	Singleton.canvas_layer.add_child(FINAL_BLACK_FADE.instantiate())
+	Singleton.canvas_layer.remove_child(self)

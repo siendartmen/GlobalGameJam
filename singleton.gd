@@ -122,7 +122,9 @@ func final() -> void:
 	
 	var fin = final.messages.size()-1
 	spawn_draggable_bubble(final.messages[fin],Vector2(0, 0))
-	zoom_to = 2
+	zoom_to = 1
+	await get_tree().create_timer(5).timeout
+	end_decision()
 	
 const FINAL_OPTION = preload("res://Menu/FinalOption.tscn")
 
