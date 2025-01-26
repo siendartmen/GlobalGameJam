@@ -21,7 +21,7 @@ func use_ability(text_bubble:TextBubble) :
 		if bubble.data.points > 0 :
 			Singleton.notify("Gained " + str(bubble.data.points) + " points from your reaction", Color(1,1,1))
 		else :
-			Singleton.notify("Lossed " + str(-bubble.data.points) + " points from your reaction", Color(1,0.1,0.1))
+			Singleton.notify("Lost " + str(-bubble.data.points) + " points from your reaction", Color(1,0.1,0.1))
 		
 	
 func get_points() -> int :

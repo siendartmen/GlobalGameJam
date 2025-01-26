@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bsvwhvoeqk0we"]
+[gd_scene load_steps=2 format=3 uid="uid://c02avil8bae4p"]
+
+[ext_resource type="Script" path="res://Menu/final_option.gd" id="1_rejgl"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -7,25 +9,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rejgl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 203.0
-offset_top = -15.0
-offset_right = -185.0
+offset_left = -212.0
+offset_top = -63.0
+offset_right = 211.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Respond" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "Respond to X"
+text = " Respond to Nick "
 
 [node name="Ignore" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "Ghost them LMAOOAOAOA"
+text = "    Ignore Nick    "
+
+[connection signal="pressed" from="HBoxContainer/Respond" to="." method="_on_respond_pressed"]
+[connection signal="pressed" from="HBoxContainer/Ignore" to="." method="_on_ignore_pressed"]

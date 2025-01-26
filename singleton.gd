@@ -114,11 +114,21 @@ func phase_4() -> void:
 func final() -> void:
 	var final = Final.new()
 	amountNeeded += final.messages.size()
-	for message in final.messages:
+	
+	for i in range(final.messages.size()-1):
+		var message = final.messages[i]
 		await get_tree().create_timer(randf()*mult+rantime).timeout
 		spawn_draggable_bubble(message,Vector2(randf() * 700 - 50, randf() * 700 - 50))
+	
+	var fin = final.messages.size()-1
+	spawn_draggable_bubble(final.messages[fin],Vector2(0, 0))
+	zoom_to = 2
+	
+const FINAL_OPTION = preload("res://Menu/FinalOption.tscn")
 
-
+func end_decision() -> void:
+	canvas_layer.add_child(FINAL_OPTION.instantiate())
+	
 func spawn_draggable_bubble(message, position: Vector2) -> void:
 	var new_draggable_bubble = DRAGGABLE_BUBBLE.instantiate()
 	new_draggable_bubble.global_position = position
@@ -162,3 +172,4 @@ func added_bubble_to_list() -> void:
 			3: phase_3()
 			4: phase_4()
 			5: final()
+			6: end_decision()
